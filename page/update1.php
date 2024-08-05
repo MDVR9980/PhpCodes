@@ -5,7 +5,10 @@
 ?>
 
 <?php
-	include('body4.php');
+	include('body5.php');
+	if (!empty($msg)) {  
+		echo "<div>" . $msg ."</div>";
+    } 
 ?>
 
 <?php

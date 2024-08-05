@@ -1,7 +1,7 @@
 <?php
 	include('./lib/connect.php');
 	include('./lib/boot.php');
-	include('./page/headerI.php');
+	include('./page/header1.php');
 ?>
 
 <?php
