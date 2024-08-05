@@ -1,0 +1,92 @@
+html, body {  
+    width: 100%;  
+    height: 100%;  
+    margin: 0;  
+    font-family: 'Arial', sans-serif;  
+    background-color: #457b9d;
+}  
+.i{
+    margin-top: 0.5%;
+    width: 10%;
+    border: 1px solid;
+    border-radius: 15px;    
+}
+.c {  
+    width: 350px;
+    padding: 30px;   
+    border: 1px solid #ced4da;
+    border-radius: 15px;   
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #a8dadc;   
+    margin: auto;   
+    margin-top: 10%;   
+}  
+
+.cc {  
+    margin-bottom: 20px; 
+}  
+
+.ccc {  
+    width: 100%;   
+    padding: 4px; 
+    border: 1px solid #ced4da;  
+	background-color: #f1faee; 
+    border-radius: 8px;   
+    transition: border-color 0.3s;   
+}  
+
+.ccc:focus {  
+    border-color: #495057;
+    outline: none;   
+}  
+
+.captcha {  
+    border: 2px solid #495057;   
+    width: 50%;  
+    font-weight: bold;  
+    background: #f8f9fa;  
+    text-align: center;  
+    padding: 12px;  
+    margin: 20px 0;  
+    border-radius: 10px;  
+    box-shadow: 0px 4px 10px rgba(240, 240, 240, 0.8);  
+    font-size: 32px;  
+	background-image: url('https://www.optacom.com/components/com_breezingforms/images/captcha/backgrounds/bg6.png');
+	background-blend-mode: multiply;
+	margin-left: 22%;
+	opacity: 0.5;
+}  
+
+input[type='submit'] {  
+    background-color: #81b29a;
+	color: black;
+    border: none;   
+    padding: 12px 25px;   
+    border-radius: 8px;   
+    font-size: 18px;   
+    cursor: pointer;   
+    transition: background-color 0.3s;   
+	width: 45%;
+	margin-left: 16.5%;
+    display: inline-block;
+    margin: 0 10px;
+}  
+
+input[type='submit']:hover { 
+    background-color: #06d6a0;
+}
+.cbtn{
+    width: 15%;
+}
+.btn{
+    display: flex;
+    gap: 10px;
+}
+
+.submit-btn{
+	margin-right: 10px;
+}
+#btn1{
+    width: 10%;
+    text-align: center;
+}
