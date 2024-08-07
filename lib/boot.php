@@ -1,7 +1,6 @@
 <?php
-session_start();
+	session_start();
 	if (isset($_POST['btn-register'])){
-
 		$msg = '';
 		$pass = '';
 		$flag = true;
@@ -102,13 +101,13 @@ session_start();
 	if(isset($_POST['btn-reg'])){
 		header("Location:userregister.php");
 	}
-	if(isset($_POST['btn-reg2'])){
+	if(isset($_POST['btn-T-reg'])){
 		header("Location:./page/userregister.php");
 	}
-	if(isset($_POST['btn-login2'])){
+	if(isset($_POST['btn-T-login'])){
 		header('Location:./page/login.php');
 	}
-	if(isset($_POST['btn-Exit'])){
+	if(isset($_POST['btn-to-login'])){
 		header('Location:login.php');
 	}
 

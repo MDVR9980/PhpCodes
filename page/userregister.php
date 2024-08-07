@@ -8,10 +8,13 @@
 	include('body2.php');
 	if (!empty($msg))
 		echo "<div>" . $msg ."</div>";
-	if($flag && $_POST['btn-register'])
+
+	if(isset($_POST['btn-register']) && $flag)
 		header("Location:dashboard.php");
-	else if($_POST['btn-login3'])
+	
+	if(isset($_POST['btn-login2']))
 		header("Location:login.php");
+		
 ?>
 
 <?php

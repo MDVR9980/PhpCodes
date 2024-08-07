@@ -2,7 +2,7 @@
 function changeCaptcha() {  
     $chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";   
 
-    $string_length = 5;    
+    $string_length = 6;    
     $changeCaptcha = '';  
     
     for ($i = 0; $i < $string_length; $i++) {  

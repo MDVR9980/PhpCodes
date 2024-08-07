@@ -31,7 +31,7 @@
                 <br/>
                 <div class='btn'>
                     <input type='submit' class='ccc' class='submit-btn' name='btn-register' value='Save' />
-                    <input type='submit' class='ccc' class='submit-btn' name='btn-login3' value='Login'/>  
+                    <input type='submit' class='ccc' class='submit-btn' name='btn-to-login' value='Login'/>  
                 </div>
             </form>
         </div>	

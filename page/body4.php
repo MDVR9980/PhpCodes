@@ -7,7 +7,7 @@
     </center>
     <form action='' method='post'>
         <div id='btn1'>
-            <input type='submit'class='ccc' class='submit-btn' name='btn-Exit' value='Exit' />
+            <input type='submit'class='ccc' class='submit-btn' name='btn-to-login' value='Exit' />
         </div>
     </form>
     	";
