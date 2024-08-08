@@ -2,7 +2,7 @@
     echo "		
     <center>
         <div class='i'>
-            <h1>Index page</h1>
+            <h3>Index page</h3>
         </div>	
     </center>
     <div class='cbtn'>

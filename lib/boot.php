@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	if (isset($_POST['btn-register'])){
 		$msg = '';
 		$pass = '';
@@ -97,6 +96,39 @@
 			}
 		}
 	}
+	if (isset($_POST['btn-update'])){
+
+		$msg = '';
+		$flag = true;
+
+		$userName = trim($_POST['username']);
+		$captcha = trim($_POST['captcha']);
+		$captcharandom = trim($_POST['captcha-rand']);
+
+		if (strlen($userName) < 8){
+			$flag = false;
+			$msg .= "Invalid Username!"."<br />";
+		}
+
+		if($captcha != $captcharandom){
+			$flag = false;
+			$msg .= "Invalid captcha value!"."<br />";
+		}
+		else{
+			$query = "SELECT * FROM `student` WHERE `username` = '".$userName."'";
+			
+			if(findquery($conn,$query) == false){
+				session_start();
+				$_SESSION['username'] = $userName;
+				header("Location:studentupdate.php");
+				exit();
+			}
+			else if($flag){
+				$flag = false;
+				$msg .= "Invalid username or password"."<br />";
+			}
+		}
+	}
 
 	if(isset($_POST['btn-reg'])){
 		header("Location:userregister.php");
@@ -111,38 +143,11 @@
 		header('Location:login.php');
 	}
 
-
-
-	if (isset($_POST['btn-update'])){
-
-		$msg = '';
-		$flag = true;
-
-		$userName = trim($_POST['username']);
-		$captcha = trim($_POST['captcha']);
-		$captcharandom = trim($_POST['captcha-rand']);
-
-		if (strlen($userName) < 8){
-			$flag = false;
-			$msg .= "Invalid Username!"."<br />";
-		}
-		if($captcha != $captcharandom){
-			$flag = false;
-			$msg .= "Invalid captcha value!"."<br />";
-		}
-		else{
-			$query = "SELECT * FROM `student` WHERE `username` = '".$userName."'";
-
-			if(findquery($conn,$query) == false){
-				$_SESSION['username'] = $userName;
-				header("Location:../page/studentupdate.php");
-				exit();
-			}
-			else if($flag){
-				$flag = false;
-				$msg .= "Invalid username or password"."<br />";
-			}
-		}
+	if(isset($_POST['btn-to-update'])){
+		header("Location:update1.php");
+	}
+	if(isset($_POST['btn-updateuser'])){
+		header("Location:dashboard.php");
 	}
 
 	if (isset($_POST['btn-updateuser'])){
