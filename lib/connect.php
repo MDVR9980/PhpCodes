@@ -7,7 +7,6 @@
     function findquery($conn,$query){
 		$result = mysqli_query($conn,$query);
 		if (mysqli_num_rows($result)==0){
-
 			return true;
 		}else {
 			return false;

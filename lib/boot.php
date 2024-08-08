@@ -61,6 +61,7 @@
 		$flag = true;
 		$secret_key = "@@darkday@@";
 
+		$typeUser = trim($_POST['tuser']);
 		$userName = trim($_POST['username']);
 		$userPass = trim($_POST['userpass']);
 		$captcha = trim($_POST['captcha']);
@@ -82,20 +83,67 @@
 		}
 		if(!$isrebot){
 			$flag = false;
-			$msg .= "you are a rebot!";
+			$msg .= "you are a rebot!"."<br />";
 		}
 		else{
 			$query = "SELECT * FROM `student` WHERE `username` = '".$userName."' and `password` = '".$pass."'";
-
-			if(findquery($conn,$query) == false){
-				header("Location:dashboard.php");
-				exit();
+			$result = runquery($conn, $query);
+			$row = mysqli_fetch_assoc($result);
+			if($row['type-user'] != $typeUser){
+				$flag = false;
+				$msg .= "Invalid type user!"."<br />";
 			}
-			else if($flag){
-				$msg .= "Invalid username or password"."<br />";
+			else{
+				if(findquery($conn, $query) == false && $typeUser == "User"){
+					header("Location:dashboard.php");
+					exit();
+				}
+				else if(findquery($conn, $query) == false && $typeUser == "Superuser"){
+					header("Location:dashboard2.php");
+					exit();
+				}
+				else if($flag){
+					$msg .= "Invalid username or password"."<br />";
+				}
 			}
+			
 		}
 	}
+
+	if(isset($_POST['btn-reg'])){
+		header("Location:userregister.php");
+	}
+
+	if(isset($_POST['btn-T-reg'])){
+		header("Location:./page/userregister.php");
+	}
+
+	if(isset($_POST['btn-T-login'])){
+		header('Location:./page/login.php');
+	}
+
+	if(isset($_POST['btn-to-login'])){
+		header('Location:login.php');
+	}
+
+	if(isset($_POST['btn-to-update'])){
+		header("Location:update1.php");
+	}
+
+	if(isset($_POST['btn-updateuser'])){
+		header("Location:dashboard.php");
+	}
+
+	if(isset($_POST['btn-to-report'])){
+		header("Location:report1.php");
+	}
+	if(isset($_POST['btn-to-chng-pass'])){
+		header("Location:changepassword.php");
+	}
+	if(isset($_POST['btn-change-pass'])){
+		header("Location:studentChangepass.php");
+	}
+
 	if (isset($_POST['btn-update'])){
 
 		$msg = '';
@@ -130,26 +178,6 @@
 		}
 	}
 
-	if(isset($_POST['btn-reg'])){
-		header("Location:userregister.php");
-	}
-	if(isset($_POST['btn-T-reg'])){
-		header("Location:./page/userregister.php");
-	}
-	if(isset($_POST['btn-T-login'])){
-		header('Location:./page/login.php');
-	}
-	if(isset($_POST['btn-to-login'])){
-		header('Location:login.php');
-	}
-
-	if(isset($_POST['btn-to-update'])){
-		header("Location:update1.php");
-	}
-	if(isset($_POST['btn-updateuser'])){
-		header("Location:dashboard.php");
-	}
-
 	if (isset($_POST['btn-updateuser'])){
 		$msg = '';
 		$flg = true;
@@ -171,4 +199,5 @@
 			$msg .= "Update seccessfully!"."<br />";
 		}
 	}
+
 ?>

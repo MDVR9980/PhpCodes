@@ -8,7 +8,7 @@ echo "
                 <label for='user-level'>select type user</label> 
             </div>
             <div class='container'>
-                <select id='user-level'>  
+                <select id='user-level' name='tuser'>  
                     <option value='Superuser'>Superuser</option>  
                     <option value='User'>User</option>  
                 </select>
