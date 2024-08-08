@@ -47,7 +47,7 @@
 		}
 		if($flag){
 			$query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES
-			('".$name."', '".$family."', 'کاربر', '".$userName."', '".$pass."', 'true')";
+			('".$name."', '".$family."', 'User', '".$userName."', '".$pass."', 'true')";
 			runquery($conn,$query);
 			$msg .= "Insert data is successful!";
 		}

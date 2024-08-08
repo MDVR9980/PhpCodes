@@ -3,7 +3,16 @@
     $captcha = changeCaptcha();
 echo "		  
     <div class='c'>  
-        <form action='' method='post'>  
+        <form action='' method='post'>
+            <div class='cc'>
+                <label for='user-level'>select type user</label> 
+            </div>
+            <div class='container'>
+                <select id='user-level'>  
+                    <option value='Superuser'>Superuser</option>  
+                    <option value='User'>User</option>  
+                </select>
+            </div> 
             <div class='cc'>  
                 <input class='ccc' id='username' name='username' placeholder='enter username' type='text'/><br />  
             </div>  
