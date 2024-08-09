@@ -5,7 +5,7 @@
 ?>
 
 <?php
-	include('body6.php');
+	include('body5.php');
 ?>
 
 <?php

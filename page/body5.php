@@ -1,24 +1,16 @@
 <?php
-    include('../lib/utils.php');
-    $captcha = changeCaptcha();
-echo "		
+    echo "		
     <center>
-			<div class='c' >
-				<form action='' method='post'>
-                    <div class='cc'>
-                        <input class='ccc' name='username' placeholder='enter a Username' type='text' /><br />
-                    </div>
-                    <div class='cc'>  
-                        <input class='ccc' id='captcha' name='captcha' placeholder='enter captcha' type='text'/><br />  
-                        <input type='hidden' name='captcha-rand' value='{$captcha}'>
-                    </div>  
-                    <div id='capt1' class='captcha'>  
-                    {$captcha}
-                    </div>
-                    <div>
-                        <input type='submit' name='btn-update' value='Update' />
-                    </div>
-				</form>
-			</div>	
-		</center>	";
+        <div>
+            <h4>Superuser Dashboard</h4><br/>
+        </div>	
+    </center>
+    <div class='cbtn'>
+        <form action='' method='post'>
+            <div class='btn'>
+                <input type='submit' name='btn-to-login' value='Exit' />
+                <input type='submit' name='btn-to-report' value='Users Report' />
+            </div>   
+        </form>
+    <div>	";
 ?>

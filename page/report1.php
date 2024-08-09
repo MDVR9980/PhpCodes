@@ -1,4 +1,11 @@
 <?php
+echo "
+	<div style='width: 13%;'>
+		<form method='post''>
+			<input type='submit' name='btn-to-dashboard' value='Back to Dashboard' />
+		</form>
+	</div>
+	";
 echo "<table>
 			<tr style=''>
 				<td>Id</td>

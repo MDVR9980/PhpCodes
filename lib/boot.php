@@ -150,6 +150,9 @@
 		$userName = trim($_POST['username']);
 		header("Location:studentChangepass.php?Iusername=" .  urlencode($userName));
 	}
+	if(isset($_POST['btn-to-dashboard'])){
+		header("Location:../page/dashboard2.php");
+	}
 
 	if(isset($_POST['chng-type'])) {
 		$userName = trim($_POST['username']);

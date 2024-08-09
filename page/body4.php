@@ -16,7 +16,3 @@
         </form>
     <div>";
 ?>
-<?php
-//<input type='submit' name='btn-to-update' value='Update' />
-//<input type='hidden' name='user' value='".$_SESSION['Iusername']."' />
-?>

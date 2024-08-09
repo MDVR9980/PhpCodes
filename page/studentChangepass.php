@@ -8,6 +8,6 @@
 	if(findquery($conn, $query) == false){
 		$result = runquery($conn,$query);
 		$row = mysqli_fetch_assoc($result);
-		include('body77.php');
+		include('body66.php');
 	}
 ?>
