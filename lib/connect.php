@@ -4,6 +4,9 @@
         $result = mysqli_query($conn, $query);
 		return $result;
     }
+	function runquery1($conn, $query){
+        $result = mysqli_query($conn, $query);
+    }
     function findquery($conn, $query){
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result)==0){

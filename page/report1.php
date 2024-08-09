@@ -9,7 +9,7 @@ echo "<table>
 				<td>Type</td>
 				<td colspan=3>Operation</td>
 			</tr>";
-		$query = "SELECT * FROM `student` where `type`='true'"; 	
+		$query = "SELECT * FROM `student`"; 	
 		$result = runquery($conn, $query);
 		while($row = mysqli_fetch_assoc($result)){
 			echo "
@@ -24,6 +24,7 @@ echo "<table>
 				echo "</td>". 
 				"<form method='post'>
 					<input type='hidden' name='username' value='".$row['username']."'>
+					<input type='hidden' name='typeU' value='".$row['type']."'>
 					<td><input type='submit' name='del-btn' value='Delete' /></td>
 					<td><input type='submit' name='chng-type' value='Inactive / Active User' /></td>
 					<td><input type='submit' name='update-user' value='Update Information' /></td>

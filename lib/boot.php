@@ -151,6 +151,21 @@
 		header("Location:studentChangepass.php?Iusername=" .  urlencode($userName));
 	}
 
+	if(isset($_POST['chng-type'])) {
+		$userName = trim($_POST['username']);
+		$typeUser = trim($_POST['typeU']);
+
+		
+
+		if($typeUser == "true") {
+			$query = "UPDATE `student` SET `type` = 'false' WHERE `username` = '".$userName."'";
+		}
+		else {
+			$query = "UPDATE `student` SET `type` = 'true' WHERE `username` = '".$userName."'";
+		}
+		runquery1($conn, $query);
+	}
+	
 	if (isset($_POST['btn-update'])){
 
 		$msg = '';
