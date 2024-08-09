@@ -27,7 +27,7 @@ echo "<table>
 					<input type='hidden' name='typeU' value='".$row['type']."'>
 					<td><input type='submit' name='del-btn' value='Delete' /></td>
 					<td><input type='submit' name='chng-type' value='Inactive / Active User' /></td>
-					<td><input type='submit' name='update-user' value='Update Information' /></td>
+					<td><input type='submit' name='btn-updateuser' value='Update Information' /></td>
 				</form>	"												
 			."</tr>";
 		}	

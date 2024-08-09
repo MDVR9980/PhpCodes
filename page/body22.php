@@ -14,7 +14,7 @@ echo "
                         <input class='ccc' name='username' placeholder='enter a Username' type='text' value='".$row['username']." ' disabled/><br />
                     </div>
                     <div class='cc'>
-                        <input type='submit' name='btn-updateuser' value='Update user' />
+                        <input type='submit' name='btn-Update-user' value='Update user' />
                     </div>
 				</form>
 			</div>	

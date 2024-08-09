@@ -136,7 +136,7 @@
 	}
 
 	if(isset($_POST['btn-to-update'])){
-		header("Location:update1.php");
+		header("Location:../page/update1.php");
 	}
 
 	if(isset($_POST['btn-updateuser'])){
@@ -155,15 +155,19 @@
 		$userName = trim($_POST['username']);
 		$typeUser = trim($_POST['typeU']);
 
-		
-
 		if($typeUser == "true") {
 			$query = "UPDATE `student` SET `type` = 'false' WHERE `username` = '".$userName."'";
 		}
 		else {
 			$query = "UPDATE `student` SET `type` = 'true' WHERE `username` = '".$userName."'";
 		}
-		runquery1($conn, $query);
+		runquery($conn, $query);
+	}
+
+	if(isset($_POST['del-btn'])){
+		$userName = trim($_POST['username']);
+		$query = "DELETE FROM `student` WHERE `username` = '".$userName."'";
+		runquery($conn, $query);
 	}
 	
 	if (isset($_POST['btn-update'])){
@@ -201,6 +205,7 @@
 	}
 
 	if(isset($_POST['btn-change-pass-user'])){
+		echo "11111";
 		$msg = '';
 		$flag = true;
 		$secret_key = "@@darkday@@";
@@ -226,25 +231,27 @@
 		}
 
 	if (isset($_POST['btn-updateuser'])){
+		session_start();
+		$_SESSION['username'] = $_POST['username'];
+		header("Location:../page/studentupdate.php");
+	}
+
+	if(isset($_POST['btn-Update-user'])){
 		$msg = '';
 		$flag = true;
 		$name = trim($_POST['nameuser']);
 		$family = trim($_POST['familyuser']);
 		$userName = trim($_SESSION['username']);
-		if (strlen($name)<3){
+		if (strlen($name)<2){
 			$flag = false;
 			$msg .= "Name User Invalid"."<br />";
 		}
-		if (strlen($family)<5){
+		if (strlen($family)<3){
 			$flag = false;
 			$msg .= "Family User Invalid"."<br />";
 		}
-		$query = "SELECT * FROM `student` WHERE `username` = '".$userName."'";
-		if(findquery($conn,$query) == false){
-			$query = "UPDATE `student` SET `name-user`='".$name."',`family-user`='".$family."' WHERE `username` = '".$userName."'";
-			runquery($conn,$query);
-			$msg .= "Update seccessfully!"."<br />";
+		$query = "UPDATE `student` SET `name-user`='".$name."',`family-user`='".$family."' WHERE `username` = '".$userName."'";
+		runquery($conn, $query);
+		header("Location:../report/reportstudent.php");
 		}
-	}
-
 ?>
