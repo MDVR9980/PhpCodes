@@ -14,7 +14,7 @@ echo "
                 </select>
             </div> 
             <div class='cc'>  
-                <input class='ccc' id='username' name='username' placeholder='enter username' type='text'/><br />  
+                <input class='ccc' id='username' name='Iusername' placeholder='enter username' type='text'/><br />  
             </div>  
             <div class='cc'>  
                 <input class='ccc' id='password' name='userpass' placeholder='enter password' type='password'/><br />  

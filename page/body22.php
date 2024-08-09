@@ -3,7 +3,7 @@
 echo "	
         <center>
 			<div class='c' >
-				<form action='' method='post'>
+				<form method='post'>
                     <div class='cc'>
                         <input class='ccc' name='nameuser' placeholder='enter a name' type='text' value='".$row['name-user']."' /><br />
                     </div>

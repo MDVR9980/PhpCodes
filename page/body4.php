@@ -1,4 +1,5 @@
 <?php
+    session_start();
     echo "		
     <center>
         <div>
@@ -6,12 +7,16 @@
         </div>	
     </center>
     <div class='cbtn'>
-        <form action='' method='post'>
+        <form method='post'>
             <div class='btn'>
+                <input type='hidden' name='username' value='".$_SESSION['Iusername']."'>
                 <input type='submit' name='btn-to-login' value='Exit' />
                 <input type='submit' name='btn-to-chng-pass' value='Change Password' />
             </div>   
         </form>
-    <div>	";
-    //<input type='submit' name='btn-to-update' value='Update' />
+    <div>";
+?>
+<?php
+//<input type='submit' name='btn-to-update' value='Update' />
+//<input type='hidden' name='user' value='".$_SESSION['Iusername']."' />
 ?>

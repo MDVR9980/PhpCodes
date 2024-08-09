@@ -54,60 +54,60 @@
 		}
 	}
 
-	if (isset($_POST['btn-login'])){
-
-		$msg = '';
-		$pass = '';
-		$flag = true;
-		$secret_key = "@@darkday@@";
-
-		$typeUser = trim($_POST['tuser']);
-		$userName = trim($_POST['username']);
-		$userPass = trim($_POST['userpass']);
-		$captcha = trim($_POST['captcha']);
-		$captcharandom = trim($_POST['captcha-rand']);
-		$isrebot = isset($_POST['subscribe']);
-		$pass = md5($userPass.$secret_key);
-
-		if (strlen($userName) < 8){
-			$flag = false;
-			$msg .= "Invalid Username!"."<br />";
-		}
-		if (strlen($userPass) < 8){
-			$flag = false;
-			$msg .= "Invalid Password!"."<br />";
-		}
-		if($captcha != $captcharandom){
-			$flag = false;
-			$msg .= "Invalid captcha value!"."<br />";
-		}
-		if(!$isrebot){
-			$flag = false;
-			$msg .= "you are a rebot!"."<br />";
-		}
-		else{
-			$query = "SELECT * FROM `student` WHERE `username` = '".$userName."' and `password` = '".$pass."'";
-			$result = runquery($conn, $query);
-			$row = mysqli_fetch_assoc($result);
-			if($row['type-user'] != $typeUser){
-				$flag = false;
-				$msg .= "Invalid type user!"."<br />";
-			}
-			else{
-				if(findquery($conn, $query) == false && $typeUser == "User"){
-					header("Location:dashboard.php");
-					exit();
-				}
-				else if(findquery($conn, $query) == false && $typeUser == "Superuser"){
-					header("Location:dashboard2.php");
-					exit();
-				}
-				else if($flag){
-					$msg .= "Invalid username or password"."<br />";
-				}
-			}
+	
+	if (isset($_POST['btn-login'])){  
+		session_start();  
+		$msg = '';  
+		$flag = true;  
+		$secret_key = "@@darkday@@";  
+	
+		$typeUser = trim($_POST['tuser']);  
+		$_SESSION['Iusername'] = $userName = trim($_POST['Iusername']);  
+		$userPass = trim($_POST['userpass']);  
+		$captcha = trim($_POST['captcha']);  
+		$captcharandom = trim($_POST['captcha-rand']);  
+		$isrebot = isset($_POST['subscribe']);  
+		$pass = md5($userPass.$secret_key);  
+	
+		if (strlen($userName) < 8){  
+			$flag = false;  
+			$msg .= "Invalid Username!"."<br />";  
+		}  
+		if (strlen($userPass) < 8){  
+			$flag = false;  
+			$msg .= "Invalid Password!"."<br />";  
+		}  
+		if($captcha != $captcharandom){  
+			$flag = false;  
+			$msg .= "Invalid captcha value!"."<br />";  
+		}  
+		if(!$isrebot){  
+			$flag = false;  
+			$msg .= "you are a rebot!"."<br />";  
+		}  
+	
+		if ($flag) {  
+			$query = "SELECT * FROM `student` WHERE `username` = '".$userName."' and `password` = '".$pass."'";  
+			$result = runquery($conn, $query);  
+			$row = mysqli_fetch_assoc($result);  
 			
-		}
+			if ($row) {  
+				if($row['type-user'] != $typeUser){  
+					$flag = false;  
+					$msg .= "Invalid type user!"."<br />";  
+				} else {  
+					$_SESSION['Iusername'] = $userName;  
+					if($typeUser == "User"){  
+						header("Location: dashboard.php?Iusername=" . urlencode($userName));  
+					} else if($typeUser == "Superuser"){  
+						header("Location: dashboard2.php");  
+					}  
+					exit();  
+				}  
+			} else {  
+				$msg .= "Invalid username or password"."<br />";  
+			}  
+		}  
 	}
 
 	if(isset($_POST['btn-reg'])){
@@ -138,10 +138,8 @@
 		header("Location:report1.php");
 	}
 	if(isset($_POST['btn-to-chng-pass'])){
-		header("Location:changepassword.php");
-	}
-	if(isset($_POST['btn-change-pass'])){
-		header("Location:studentChangepass.php");
+		$userName = trim($_POST['username']);
+		header("Location:studentChangepass.php?Iusername=" .  urlencode($userName));
 	}
 
 	if (isset($_POST['btn-update'])){
@@ -178,18 +176,43 @@
 		}
 	}
 
+	if(isset($_POST['btn-change-pass-user'])){
+		$msg = '';
+		$flag = true;
+		$secret_key = "@@darkday@@";
+
+		$newPass = trim($_POST['newPass']);
+		$newPass2 = trim($_POST['newPass2']);
+		$userName = trim($_POST['username']);
+		$pass = md5($newPass.$secret_key);
+
+		if (strlen($newPass)<8){
+			$flag = false;
+			$msg .= "new Password length invalid"."<br />";
+		}
+		if (strlen($newPass2)<8){
+			$flag = false;
+			$msg .= "confirm new password length invalid"."<br />";
+		}
+		if($newPass == $newPass2){
+				$query = "UPDATE `student` SET `password` = '".$pass."' WHERE `username` = '".$userName."'";
+				$result = runquery($conn, $query);
+				header("Location:dashboard.php");
+			}
+		}
+
 	if (isset($_POST['btn-updateuser'])){
 		$msg = '';
-		$flg = true;
+		$flag = true;
 		$name = trim($_POST['nameuser']);
 		$family = trim($_POST['familyuser']);
 		$userName = trim($_SESSION['username']);
 		if (strlen($name)<3){
-			$flg = false;
+			$flag = false;
 			$msg .= "Name User Invalid"."<br />";
 		}
 		if (strlen($family)<5){
-			$flg = false;
+			$flag = false;
 			$msg .= "Family User Invalid"."<br />";
 		}
 		$query = "SELECT * FROM `student` WHERE `username` = '".$userName."'";
