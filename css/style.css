@@ -353,8 +353,8 @@ input[type='submit']:hover {
 table {  
     direction: rtl;
     float: right;  
-    margin: 10% 10% 0 0;  
-    border-collapse: collapse;  
+    margin: 8% 21% 0 0;  
+    border-collapse: collapse;
 }  
 
 td {

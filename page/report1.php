@@ -7,9 +7,10 @@ echo "<table>
 				<td>Typeuser</td>
 				<td>Username</td>
 				<td>Type</td>
+				<td colspan=3>Operation</td>
 			</tr>";
 		$query = "SELECT * FROM `student` where `type`='true'"; 	
-		$result = runquery($conn,$query);
+		$result = runquery($conn, $query);
 		while($row = mysqli_fetch_assoc($result)){
 			echo "
             <tr>
@@ -20,9 +21,14 @@ echo "<table>
 				<td>".$row['username']."</td>
 				<td>";
 				if($row['type']=='true'){echo "Active";}else {echo "Inactive";}
-				echo "</td>
-																
-			</tr>";
+				echo "</td>". 
+				"<form method='post'>
+					<input type='hidden' name='username' value='".$row['username']."'>
+					<td><input type='submit' name='del-btn' value='Delete' /></td>
+					<td><input type='submit' name='chng-type' value='Inactive / Active User' /></td>
+					<td><input type='submit' name='update-user' value='Update Information' /></td>
+				</form>	"												
+			."</tr>";
 		}	
 		echo "</table>";
 ?>

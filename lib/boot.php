@@ -48,10 +48,19 @@
 		if($flag){
 			$query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES
 			('".$name."', '".$family."', 'User', '".$userName."', '".$pass."', 'true')";
-			runquery($conn,$query);
-			$msg .= "Insert data is successful!";
+			$result = runquery($conn,$query);
+			if (!empty($msg) )
+				echo "<div>" . $msg ."</div>";
+			
+			if($result) header("Location:login.php");
+			exit(); 
+
 		}
 		}
+		if (!empty($msg) )
+			echo "<div>" . $msg ."</div>";
+		
+		if($result) header("Location:login.php"); 
 	}
 
 	
@@ -135,7 +144,7 @@
 	}
 
 	if(isset($_POST['btn-to-report'])){
-		header("Location:report1.php");
+		header("Location:../report/reportstudent.php");
 	}
 	if(isset($_POST['btn-to-chng-pass'])){
 		$userName = trim($_POST['username']);
