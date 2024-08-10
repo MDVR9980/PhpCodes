@@ -7,12 +7,6 @@ body {
     background-color: #3d3e3d;
     overflow-y: auto;
 }
-
-#capt1 {
-    margin-right: 20%;
-    font-family: 'Segoe UI', sans-serif;
-}
-
 table {
     width: 90%;
     border-collapse: collapse;
@@ -21,28 +15,11 @@ table {
     margin: 8% 5% 0 0;
     border-collapse: collapse;
 }
-
 td {
     border: 1px solid #ddd;
     /* border-radius: 5px; */
     text-align: center;
     padding: 15px;
-}
-
-.container {
-    width: 79%;
-    margin: 15px;
-    padding: 10px;
-    background-color: #457b9d;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-}
-
-div.container {
-    margin-left: 8%;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 select {
@@ -79,19 +56,10 @@ select {
     margin-left: 22%;
     opacity: 0.5;
 }
-
-.i {
-    margin-top: 0.5%;
-    width: 10%;
-    border: 1px solid;
-    border-radius: 15px;
-}
-
 .c {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     width: 60%;
     max-width: 400px;
     padding: 30px;
@@ -109,7 +77,6 @@ select {
     margin: 1em 0;
     position: relative;
 }
-
 .inputGroup input {
     font-family: 'Segoe UI', sans-serif;
     font-size: 90%;
@@ -123,7 +90,6 @@ select {
     margin: 0 auto;
     display: block;
 }
-
 .inputGroup label {
     border-radius: 20px;
     font-size: 100%;
@@ -135,7 +101,6 @@ select {
     color: #3d3e3d;
     transform: translateY(-50%);
 }
-
 .inputGroup input:focus+label,
 .inputGroup input:valid+label {
     transform: translateY(-150%) scale(0.8);
@@ -144,21 +109,11 @@ select {
     background-color: #3bceac;
     border: 3px solid #540d6e;
 }
-
 .inputGroup input:focus,
 .inputGroup input:valid {
     border: 1px solid #540d6e;
     background-color: #3bceac;
 }
-
-.group {
-    margin-left: 22%;
-    line-height: 30px;
-    align-items: center;
-    position: relative;
-    max-width: 220px;
-}
-
 .input {
     width: 100%;
     height: 45px;
@@ -172,18 +127,12 @@ select {
     color: #0d0c22;
     transition: .5s ease;
 }
-
-.input::placeholder {
-    color: #94a3b8;
-}
-
 .input:focus,
 input:hover {
     outline: none;
     background-color: #ffd23f;
     box-shadow: 0px 0px 10px rgba(61, 62, 61, 0.5);
 }
-
 .icon {
     position: absolute;
     left: 1rem;
@@ -191,13 +140,11 @@ input:hover {
     width: 1rem;
     height: 1rem;
 }
-
 @media (max-width: 576px) {
     .inputGroup input {
         width: 100%;
     }
 }
-
 .submit-btn {
     width: 35%;
     background-color: #ee4266;
@@ -211,12 +158,10 @@ input:hover {
     margin-right: 10px;
     font-family: 'Segoe UI', sans-serif;
 }
-
 .submit-btn:hover {
     background-color: #3bceac;
     font-family: 'Segoe UI', sans-serif;
 }
-
 .checkbox-wrapper-33 {
     --s-xsmall: 0.625em;
     --s-small: 1.2em;
@@ -229,7 +174,6 @@ input:hover {
     --e-in: ease-in;
     --e-out: cubic-bezier(0.11, 0.29, 0.18, 0.98);
 }
-
 .checkbox-wrapper-33 .visuallyhidden {
     border: 0;
     clip: rect(0 0 0 0);
@@ -240,16 +184,13 @@ input:hover {
     position: absolute;
     width: 1px;
 }
-
 .checkbox-wrapper-33 .checkbox {
     justify-content: flex-start;
     color: rgb(100, 100, 100);
 }
-
 .checkbox-wrapper-33 .checkbox+.checkbox {
     margin-top: var(--s-small);
 }
-
 .checkbox-wrapper-33 .checkbox__symbol {
     display: inline-block;
     margin-right: calc(var(--s-small) * 0.7);
@@ -264,7 +205,6 @@ input:hover {
         background-color var(--t-base);
     box-shadow: 0 0 0 0 var(--c-primary-10-percent-opacity);
 }
-
 .checkbox-wrapper-33 .checkbox__symbol:after {
     content: "";
     position: absolute;
@@ -278,7 +218,6 @@ input:hover {
     transform: scale(1);
     transform-origin: 50% 50%;
 }
-
 .checkbox-wrapper-33 .checkbox .icon-checkbox {
     width: 1em;
     height: 1em;
@@ -292,32 +231,26 @@ input:hover {
     color: var(--c-primary);
     display: inline-block;
 }
-
 .checkbox-wrapper-33 .checkbox .icon-checkbox path {
     transition: stroke-dashoffset var(--t-fast) var(--e-in);
     stroke-dasharray: 30px, 31px;
     stroke-dashoffset: 31px;
 }
-
 .checkbox-wrapper-33 .checkbox__textwrapper {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
 }
-
 .checkbox-wrapper-33 .checkbox__trigger:checked+.checkbox__symbol:after {
     -webkit-animation: ripple-33 1.5s var(--e-out);
     animation: ripple-33 1.5s var(--e-out);
 }
-
 .checkbox-wrapper-33 .checkbox__trigger:checked+.checkbox__symbol .icon-checkbox path {
     transition: stroke-dashoffset var(--t-base) var(--e-out);
     stroke-dashoffset: 0px;
 }
-
 .checkbox-wrapper-33 .checkbox__trigger:focus+.checkbox__symbol {
     box-shadow: 0 0 0 0.25em var(--c-primary-20-percent-opacity);
 }
-
 @-webkit-keyframes ripple-33 {
     from {
         transform: scale(0);
@@ -329,7 +262,6 @@ input:hover {
         transform: scale(20);
     }
 }
-
 @keyframes ripple-33 {
     from {
         transform: scale(0);
@@ -341,16 +273,13 @@ input:hover {
         transform: scale(20);
     }
 }
-
 .div-form-btn {
     width: 25%;
     margin-left: 1%;
 }
-
 #newPass, #newPass2,#read-username {
     width: 60%;
 }
-
 #i1 {
     margin: 10% 0 0 10%;
     font-size: 16px;

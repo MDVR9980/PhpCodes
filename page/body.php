@@ -1,7 +1,7 @@
 <?php
 echo "		
     <center>
-        <div class='i'>
+        <div>
             <h3>Index page</h3>
         </div>	
     </center>
