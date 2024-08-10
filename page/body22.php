@@ -1,20 +1,23 @@
-<link rel='stylesheet' type='text/css' href='../css/style.css'/>
+<link rel='stylesheet' type='text/css' href='../css/style.css' />
 <?php
 echo "	
         <center>
 			<div class='c' >
 				<form method='post'>
-                    <div class='cc'>
-                        <input class='ccc' name='nameuser' placeholder='enter a name' type='text' value='".$row['name-user']."' /><br />
+                    <div class='inputGroup'>  
+                        <input id='nameuser' name='nameuser' type='text' value='" . $row['name-user'] . "' />  
+                        <label for='nameuser'>Name</label>  
                     </div>
-                    <div class='cc'>
-                        <input class='ccc' name='familyuser' placeholder='enter a famil' type='text' value='".$row['family-user']."' /><br />
-                    </div>
-                    <div class='cc'>
-                        <input class='ccc' name='username' placeholder='enter a Username' type='text' value='".$row['username']." ' disabled/><br />
-                    </div>
-                    <div class='cc'>
-                        <input type='submit' name='btn-Update-user' value='Update user' />
+                    <div class='inputGroup'>  
+                        <input id='familyuser' name='familyuser' value='" . $row['family-user'] . "' />  
+                        <label for='familyuser'>Family</label>  
+                    </div> 
+                    <div class='inputGroup'>  
+                        <input id='username' name='username' value='" . $row['username'] . "' type='text' readnoly />  
+                        <label for='username'>Username</label>  
+                    </div> 
+                    <div>
+                        <input type='submit' class='submit-btn' name='btn-Update-user' value='Update user' />
                     </div>
 				</form>
 			</div>	

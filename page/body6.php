@@ -1,22 +1,24 @@
+<link rel='stylesheet' type='text/css' href='../css/style.css' />
 <?php
-    include('../lib/utils.php');
-    $captcha = changeCaptcha();
-echo "		
-    <center>
+echo "	
+        <center>
 			<div class='c' >
-				<form action='' method='post'>
-                    <div class='cc'>
-                        <input class='ccc' name='username' placeholder='enter a Username' type='text' /><br />
+				<form method='post'>
+                    <input type='hidden' name='flag-user' value='" . isset($_GET['Susername']) . "'/>
+                    <div class='inputGroup'>  
+                        <input id='newPass' name='newPass' type='password' required/>  
+                        <label for='newPass'>New Password</label>  
                     </div>
-                    <div class='cc'>  
-                        <input class='ccc' id='captcha' name='captcha' placeholder='enter captcha' type='text'/><br />  
-                        <input type='hidden' name='captcha-rand' value='{$captcha}'>
-                    </div>  
-                    <div id='capt1' class='captcha'>  
-                    {$captcha}
+                    <div class='inputGroup'>  
+                        <input id='newPass2' name='newPass2' type='password' required/>  
+                        <label for='newPass2'>Confirm new password</label>  
                     </div>
+                    <div class='inputGroup'>  
+                        <input id='read-username' name='username' value='" . $row['username'] . "' type='text' readnoly/>  
+                        <label for='read-username'>Username</label>  
+                    </div> 
                     <div>
-                        <input type='submit' name='btn-change-pass' value='Update' />
+                        <input type='submit' class='submit-btn' name='btn-change-pass-user' value='Change Password' />
                     </div>
 				</form>
 			</div>	

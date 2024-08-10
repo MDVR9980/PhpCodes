@@ -1,428 +1,360 @@
-/* html, body {  
-    width: 100%;  
-    height: 100%;  
-    margin: 0;  
-    font-family: 'Arial', sans-serif;  
-    background-color: #457b9d;  
-}  
-
-.i {  
-    margin-top: 0.5%;  
-    width: 10%;  
-    border: 1px solid;  
-    border-radius: 15px;  
-}  
-
-.c {  
-    width: 350px;  
-    padding: 30px;  
-    border: 1px solid #ced4da;  
-    border-radius: 15px;  
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);  
-    background-color: #a8dadc;  
-    margin: auto;  
-    margin-top: 10%;  
-}  
-
-.cc {  
-    margin-bottom: 20px;  
-}  
-
-.ccc {  
-    width: 100%;  
-    padding: 4px;  
-    border: 1px solid #ced4da;  
-    background-color: #f1faee;  
-    border-radius: 8px;  
-    transition: border-color 0.3s;  
-}  
-
-.ccc:focus {  
-    border-color: #495057;  
-    outline: none;  
-}  
-
-.captcha {  
-    border: 2px solid #495057;  
-    width: 50%;  
-    font-weight: bold;  
-    background: #f8f9fa;  
-    text-align: center;  
-    padding: 12px;  
-    margin: 20px 0;  
-    border-radius: 10px;  
-    box-shadow: 0px 4px 10px rgba(240, 240, 240, 0.8);  
-    font-size: 32px;  
-    background-image: url('https://www.optacom.com/components/com_breezingforms/images/captcha/backgrounds/bg6.png');  
-    background-blend-mode: multiply;  
-    margin-left: 22%;  
-    opacity: 0.5;  
-}  
-
-#capt1 {  
-    margin-right: 20%;  
-}  
-
-input[type='submit'] {  
-    background-color: #81b29a;  
-    color: black;  
-    border: none;  
-    padding: 12px 25px;  
-    border-radius: 8px;  
-    font-size: 18px;  
-    cursor: pointer;  
-    transition: background-color 0.3s;  
-    width: 45%;  
-    margin-left: 16.5%;  
-    display: inline-block;  
-    margin: 0 10px;  
-}  
-
-input[type='submit']:hover {  
-    background-color: #06d6a0;  
-}  
-
-.cbtn {  
-    width: 15%;  
-}  
-
-.btn {  
-    display: inline;
-    display: flex;  
-    gap: 10px;  
-}  
-
-.submit-btn {  
-    margin-right: 10px;  
-}  
-
-.btn1 {  
-    margin-right: 1%;
-    text-align: center;
-    display: inline-block;
-    width: 30%;  
-    text-align: center;  
-}  
-.btn2 {  
-    margin-right: 1%;
-    text-align: center;
-    display: inline-block;
-    width: 40%;  
-    text-align: center;  
-}  
-
-#subs {  
-    margin-left: 30%;  
-}  
-
-table {  
-    direction: rtl;
-    float: right;  
-    margin: 10% 10% 0 0;  
-    border-collapse: collapse;  
-}  
-
-td {
-    border: 1px solid red;  
-    border-radius: 5px;  
-    text-align: center;  
-    padding: 8px;  
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #3d3e3d;
+    overflow-y: auto;
 }
 
-.btn-main{
-    border: 1px solid;
-    display: inline-block;
-    width: 30%;
+#capt1 {
+    margin-right: 20%;
+    font-family: 'Segoe UI', sans-serif;
 }
-.container {  
-    margin: 50px;  
-    padding: 20px;  
-    background-color: white;  
-    border-radius: 5px;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-}
-select {  
-    width: 100%;  
-    padding: 10px;  
-    border: 1px solid #ccc;  
-    border-radius: 5px;  
-    font-size: 16px;  
-}   */
 
-/* 
-html, body {  
-    width: 100%;  
-    height: 100%;  
-    margin: 0;  
-    font-family: 'Arial', sans-serif;  
-    background-color: #457b9d;  
-}  
-
-.c {  
-    width: 350px;  
-    padding: 30px;  
-    border: 1px solid #ced4da;  
-    border-radius: 15px;  
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);  
-    background-color: #a8dadc;  
-    margin: auto;  
-    margin-top: 10%;  
-}  
-
-.cc {  
-    margin-bottom: 20px;  
-}  
-
-.ccc, select {  
-    width: 100%;  
-    padding: 10px;  
-    border: 1px solid #ced4da;  
-    background-color: #f1faee;  
-    border-radius: 8px;  
-    transition: border-color 0.3s;  
-}  
-
-.ccc:focus, select:focus {  
-    border-color: #495057;  
-    outline: none;  
-}  
-
-.captcha {  
-    border: 2px solid #495057;  
-    width: 50%;  
-    font-weight: bold;  
-    background: #f8f9fa;  
-    text-align: center;  
-    padding: 12px;  
-    margin: 20px 0;  
-    border-radius: 10px;  
-    box-shadow: 0px 4px 10px rgba(240, 240, 240, 0.8);  
-    font-size: 32px;  
-    background-image: url('https://www.optacom.com/components/com_breezingforms/images/captcha/backgrounds/bg6.png');  
-    background-blend-mode: multiply;  
-    margin-left: 22%;  
-    opacity: 0.5;  
-}  
-
-input[type='submit'] {  
-    background-color: #81b29a;  
-    color: black;  
-    border: none;  
-    padding: 12px 25px;  
-    border-radius: 8px;  
-    font-size: 18px;  
-    cursor: pointer;  
-    transition: background-color 0.3s;  
-    width: 45%;  
-    margin-left: 16.5%;  
-    display: inline-block;  
-    margin: 0 10px;  
-}  
-
-input[type='submit']:hover {  
-    background-color: #06d6a0;  
-}  
-
-.btn {  
-    display: flex;  
-    gap: 10px;  
-}  
-
-#subs {  
-    margin-left: 30%;  
-}  
-
-.container {  
-    margin: 50px;  
-    padding: 20px;  
-    background-color: white;  
-    border-radius: 5px;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    display: flex;  
-    flex-direction: column;  
-}  
-
-select {  
-    -webkit-appearance: none; 
-    -moz-appearance: none;  
-    appearance: none;  
-    background-color: #f1faee;  
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" fill="#495057"/></svg>');  
-    background-repeat: no-repeat;  
-    background-position: right 10px center;
-    background-size: 10px;
-} */
-
-
-html, body {  
-    width: 100%;  
-    height: 100%;  
-    margin: 0;  
-    font-family: 'Arial', sans-serif;  
-    background-color: #457b9d;  
-    overflow-y: auto; 
-}  
-
-.c {  
-    width: 80%;
-    max-width: 400px;  
-    padding: 20px; 
-    border: 1px solid #ced4da;  
-    border-radius: 15px;  
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);  
-    background-color: #a8dadc;  
-    margin: auto;  
-    margin-top: 5%;
-}  
-
-.cc {  
-    margin-left: 8%;
-    margin-bottom: 15px;
-    width: 80%; 
-}  
-
-.ccc {  
-    width: 100%;  
-    padding: 8px;
-    border: 1px solid #ced4da;  
-    background-color: #f1faee;  
-    border-radius: 15px;  
-    transition: border-color 0.3s;  
-}  
-
-.ccc:focus {  
-    border-color: #495057;  
-    outline: none;  
-}  
-
-input[type='submit'] {  
-    background-color: #81b29a;  
-    color: black;  
-    border: none;  
-    padding: 10px 20px; 
-    border-radius: 15px;  
-    font-size: 16px; 
-    cursor: pointer;  
-    transition: background-color 0.3s;  
-    width: 90%; 
-    margin: 10px auto; 
-    display: block;  
-}  
-
-input[type='submit']:hover {  
-    background-color: #06d6a0;  
-}  
-
-.cbtn {  
-    width: 15%;  
-}  
-
-.btn {  
-    display: inline;
-    display: flex;  
-    gap: 10px;  
-}  
-
-.submit-btn {  
-    margin-right: 10px;  
-}  
-
-.btn1 {  
-    margin-right: 1%;
-    text-align: center;
-    display: inline-block;
-    width: 30%;  
-    text-align: center;  
-}  
-.btn2 {  
-    margin-right: 1%;
-    text-align: center;
-    display: inline-block;
-    width: 40%;  
-    text-align: center;  
-}  
-
-#subs {  
-    margin-left: 30%;  
-}  
-
-#capt1 {  
-    margin-right: 20%;  
-}  
-
-table {  
-    direction: rtl;
-    float: right;  
-    margin: 8% 21% 0 0;  
+table {
+    width: 90%;
     border-collapse: collapse;
-}  
+    direction: rtl;
+    float: right;
+    margin: 8% 5% 0 0;
+    border-collapse: collapse;
+}
 
 td {
-    border: 1px solid red;  
-    border-radius: 5px;  
-    text-align: center;  
-    padding: 8px;  
+    border: 1px solid #ddd;
+    /* border-radius: 5px; */
+    text-align: center;
+    padding: 15px;
 }
 
-.btn-main{
-    border: 1px solid;
-    display: inline-block;
-    width: 30%;
-}
-
-.container {  
+.container {
     width: 79%;
-    margin: 15px;  
-    padding: 10px;  
-    background-color: #457b9d;  
-    border-radius: 15px;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    display: flex;  
-    flex-direction: column;  
-}  
-div.container{
+    margin: 15px;
+    padding: 10px;
+    background-color: #457b9d;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+
+div.container {
     margin-left: 8%;
     padding-top: 5px;
     padding-bottom: 5px;
 }
-select {  
+
+select {
     width: 80;
     padding: 8px;
-    border: 1px solid #ced4da;  
-    background-color: #f1faee;  
-    border-radius: 15px;  
+    border: 1px solid #ced4da;
+    background-color: #f1faee;
+    border-radius: 15px;
     transition: border-color 0.3s;
-    -webkit-appearance: none;  
-    -moz-appearance: none;  
-    appearance: none;  
-    background-color: #f1faee;  
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" fill="#495057"/></svg>');  
-    background-repeat: no-repeat;  
-    background-position: right 10px center;  
-    background-size: 10px;  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f1faee;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" fill="#495057"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
     padding-right: 30px;
 }
 
-.captcha {  
-    border: 2px solid #495057;  
-    width: 50%;  
-    font-weight: bold;  
-    background: #f8f9fa;  
-    text-align: center;  
-    padding: 12px;  
-    margin: 20px 0;  
-    border-radius: 10px;  
-    box-shadow: 0px 4px 10px rgba(240, 240, 240, 0.8);  
-    font-size: 32px;  
-    background-image: url('https://www.optacom.com/components/com_breezingforms/images/captcha/backgrounds/bg6.png');  
-    background-blend-mode: multiply;  
-    margin-left: 22%;  
-    opacity: 0.5;  
-}  
+.captcha {
+    border: 2px solid #495057;
+    width: 50%;
+    font-weight: bold;
+    background: #f8f9fa;
+    text-align: center;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(240, 240, 240, 0.8);
+    font-size: 32px;
+    background-image: url('https://www.optacom.com/components/com_breezingforms/images/captcha/backgrounds/bg6.png');
+    background-blend-mode: multiply;
+    margin-left: 22%;
+    opacity: 0.5;
+}
 
-.i {  
-    margin-top: 0.5%;  
-    width: 10%;  
-    border: 1px solid;  
-    border-radius: 15px;  
-}  
+.i {
+    margin-top: 0.5%;
+    width: 10%;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.c {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #540d6e;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #e8e8e8;
+    margin: auto;
+    margin-top: 4.5%;
+    text-align: center;
+}
+
+.inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0;
+    position: relative;
+}
+
+.inputGroup input {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 90%;
+    padding: 0.9em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: #ee4266;
+    border-radius: 20px;
+    width: 50%;
+    transition: border-color 0.3s;
+    margin: 0 auto;
+    display: block;
+}
+
+.inputGroup label {
+    border-radius: 20px;
+    font-size: 100%;
+    position: absolute;
+    top: 50%;
+    left: 6em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: #3d3e3d;
+    transform: translateY(-50%);
+}
+
+.inputGroup input:focus+label,
+.inputGroup input:valid+label {
+    transform: translateY(-150%) scale(0.8);
+    left: 6em;
+    padding: 0 0.4em;
+    background-color: #3bceac;
+    border: 3px solid #540d6e;
+}
+
+.inputGroup input:focus,
+.inputGroup input:valid {
+    border: 1px solid #540d6e;
+    background-color: #3bceac;
+}
+
+.group {
+    margin-left: 22%;
+    line-height: 30px;
+    align-items: center;
+    position: relative;
+    max-width: 220px;
+}
+
+.input {
+    width: 100%;
+    height: 45px;
+    line-height: 30px;
+    padding: 0 5rem;
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+}
+
+.input::placeholder {
+    color: #94a3b8;
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    background-color: #ffd23f;
+    box-shadow: 0px 0px 10px rgba(61, 62, 61, 0.5);
+}
+
+.icon {
+    position: absolute;
+    left: 1rem;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+}
+
+@media (max-width: 576px) {
+    .inputGroup input {
+        width: 100%;
+    }
+}
+
+.submit-btn {
+    width: 35%;
+    background-color: #ee4266;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.submit-btn:hover {
+    background-color: #3bceac;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.checkbox-wrapper-33 {
+    --s-xsmall: 0.625em;
+    --s-small: 1.2em;
+    --border-width: 1px;
+    --c-primary: #5f11e8;
+    --c-primary-20-percent-opacity: rgb(95 17 232 / 20%);
+    --c-primary-10-percent-opacity: rgb(95 17 232 / 10%);
+    --t-base: 0.4s;
+    --t-fast: 0.2s;
+    --e-in: ease-in;
+    --e-out: cubic-bezier(0.11, 0.29, 0.18, 0.98);
+}
+
+.checkbox-wrapper-33 .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.checkbox-wrapper-33 .checkbox {
+    justify-content: flex-start;
+    color: rgb(100, 100, 100);
+}
+
+.checkbox-wrapper-33 .checkbox+.checkbox {
+    margin-top: var(--s-small);
+}
+
+.checkbox-wrapper-33 .checkbox__symbol {
+    display: inline-block;
+    margin-right: calc(var(--s-small) * 0.7);
+    border: var(--border-width) solid var(--c-primary);
+    position: absolute;
+    margin-left: -5em;
+    ;
+    border-radius: 0.1em;
+    width: 1.5em;
+    height: 1.5em;
+    transition: box-shadow var(--t-base) var(--e-out),
+        background-color var(--t-base);
+    box-shadow: 0 0 0 0 var(--c-primary-10-percent-opacity);
+}
+
+.checkbox-wrapper-33 .checkbox__symbol:after {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    width: 0.25em;
+    height: 0.25em;
+    background-color: var(--c-primary-20-percent-opacity);
+    opacity: 0;
+    border-radius: 3em;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+}
+
+.checkbox-wrapper-33 .checkbox .icon-checkbox {
+    width: 1em;
+    height: 1em;
+    margin: auto;
+    fill: none;
+    stroke-width: 3;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    color: var(--c-primary);
+    display: inline-block;
+}
+
+.checkbox-wrapper-33 .checkbox .icon-checkbox path {
+    transition: stroke-dashoffset var(--t-fast) var(--e-in);
+    stroke-dasharray: 30px, 31px;
+    stroke-dashoffset: 31px;
+}
+
+.checkbox-wrapper-33 .checkbox__textwrapper {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+.checkbox-wrapper-33 .checkbox__trigger:checked+.checkbox__symbol:after {
+    -webkit-animation: ripple-33 1.5s var(--e-out);
+    animation: ripple-33 1.5s var(--e-out);
+}
+
+.checkbox-wrapper-33 .checkbox__trigger:checked+.checkbox__symbol .icon-checkbox path {
+    transition: stroke-dashoffset var(--t-base) var(--e-out);
+    stroke-dashoffset: 0px;
+}
+
+.checkbox-wrapper-33 .checkbox__trigger:focus+.checkbox__symbol {
+    box-shadow: 0 0 0 0.25em var(--c-primary-20-percent-opacity);
+}
+
+@-webkit-keyframes ripple-33 {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(20);
+    }
+}
+
+@keyframes ripple-33 {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(20);
+    }
+}
+
+.div-form-btn {
+    width: 25%;
+    margin-left: 1%;
+}
+
+#newPass, #newPass2,#read-username {
+    width: 60%;
+}
+
+#i1 {
+    margin: 10% 0 0 10%;
+    font-size: 16px;
+    padding: 8px 18px; 
+    width: 200px; 
+    height: 50px;
+}
