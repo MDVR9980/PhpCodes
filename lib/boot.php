@@ -150,6 +150,10 @@
 		$userName = trim($_POST['username']);
 		header("Location:studentChangepass.php?Iusername=" .  urlencode($userName));
 	}
+	if(isset($_POST['btn-to-chng-pass2'])){
+		$userName = trim($_POST['username']);
+		header("Location:../page/studentChangepass.php?Susername=" .  urlencode($userName));
+	}
 	if(isset($_POST['btn-to-dashboard'])){
 		header("Location:../page/dashboard2.php");
 	}
@@ -208,7 +212,6 @@
 	}
 
 	if(isset($_POST['btn-change-pass-user'])){
-		echo "11111";
 		$msg = '';
 		$flag = true;
 		$secret_key = "@@darkday@@";
@@ -216,6 +219,7 @@
 		$newPass = trim($_POST['newPass']);
 		$newPass2 = trim($_POST['newPass2']);
 		$userName = trim($_POST['username']);
+		$flagUser = trim($_POST['flag-user']);
 		$pass = md5($newPass.$secret_key);
 
 		if (strlen($newPass)<8){
@@ -228,8 +232,11 @@
 		}
 		if($newPass == $newPass2){
 				$query = "UPDATE `student` SET `password` = '".$pass."' WHERE `username` = '".$userName."'";
-				$result = runquery($conn, $query);
-				header("Location:dashboard.php");
+				runquery($conn, $query);
+				if($flagUser == "1")
+					header("Location:../report/reportstudent.php");	
+				else
+					header("Location:dashboard.php");
 			}
 		}
 

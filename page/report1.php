@@ -14,7 +14,7 @@ echo "<table>
 				<td>Typeuser</td>
 				<td>Username</td>
 				<td>Type</td>
-				<td colspan=3>Operation</td>
+				<td colspan=4>Operation</td>
 			</tr>";
 		$query = "SELECT * FROM `student`"; 	
 		$result = runquery($conn, $query);
@@ -35,6 +35,7 @@ echo "<table>
 					<td><input type='submit' name='del-btn' value='Delete' /></td>
 					<td><input type='submit' name='chng-type' value='Inactive / Active User' /></td>
 					<td><input type='submit' name='btn-updateuser' value='Update Information' /></td>
+					<td><input type='submit' name='btn-to-chng-pass2' value='Change Password' /></td>
 				</form>	"												
 			."</tr>";
 		}	

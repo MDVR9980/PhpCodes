@@ -3,7 +3,11 @@
 	include('../lib/connect.php');
 	include('../lib/boot.php');
 	
-	$userName = $_GET["Iusername"];
+	if(isset($_GET["Iusername"]))
+		$userName = $_GET["Iusername"];
+	else
+		$userName = $_GET["Susername"];
+	
 	$query = "SELECT * FROM `student` WHERE `username` = '".$userName."'";
 	if(findquery($conn, $query) == false){
 		$result = runquery($conn,$query);

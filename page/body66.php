@@ -4,6 +4,7 @@ echo "
         <center>
 			<div class='c' >
 				<form method='post'>
+                    <input type='hidden' name='flag-user' value='".isset($_GET['Susername'])."'/>
                     <div class='cc'>
                         <input class='ccc' name='newPass' placeholder='enter new password' type='password' /><br />
                     </div>
