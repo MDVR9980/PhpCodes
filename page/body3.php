@@ -4,8 +4,8 @@ $captcha = changeCaptcha();
 echo "		  
     <div class='c'>  
         <form method='post'>
-            <div class='cc'>
-                <label for='user-level'>select type user</label> 
+            <div id='div-user-level'>
+                <label for='user-level'>Select type user</label> 
             </div>
             <div class='inputGroup'>
                 <select id='user-level' name='tuser'>  

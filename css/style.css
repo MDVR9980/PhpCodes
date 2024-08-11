@@ -17,12 +17,13 @@ table {
 }
 td {
     border: 1px solid #ddd;
-    /* border-radius: 5px; */
     text-align: center;
     padding: 15px;
 }
 
 select {
+    margin-left: 1%;
+    margin-bottom: 3.5%;
     width: 80;
     padding: 8px;
     border: 1px solid #ced4da;
@@ -41,6 +42,7 @@ select {
 }
 
 .captcha {
+    color: #1a1a1a;
     border: 2px solid #495057;
     width: 50%;
     font-weight: bold;
@@ -91,6 +93,7 @@ select {
     display: block;
 }
 .inputGroup label {
+    font-weight: bold;
     border-radius: 20px;
     font-size: 100%;
     position: absolute;
@@ -146,9 +149,10 @@ input:hover {
     }
 }
 .submit-btn {
+    font-weight: bold;
     width: 35%;
     background-color: #ee4266;
-    color: black;
+    color: #3d3e3d;
     border: none;
     padding: 10px 20px;
     border-radius: 15px;
@@ -237,6 +241,8 @@ input:hover {
     stroke-dashoffset: 31px;
 }
 .checkbox-wrapper-33 .checkbox__textwrapper {
+    font-weight: bold;
+    color: #3d3e3d;
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
 }
@@ -286,4 +292,21 @@ input:hover {
     padding: 8px 18px; 
     width: 200px; 
     height: 50px;
+}
+#user-level {
+    font-weight: bold;
+    text-align: center;
+    color: #3d3e3d;
+    width: 50%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #3bceac;
+}
+
+#div-user-level {
+    font-weight: bold;
+    color: #3d3e3d;
+    text-align: center;
+    margin-left: 138px;
+    width: 30%;
+    font-family: 'Segoe UI', sans-serif;
 }
