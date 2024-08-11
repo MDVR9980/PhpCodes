@@ -9,7 +9,8 @@ echo "
             </div>
             <div class='inputGroup'>
                 <select id='user-level' name='tuser'>  
-                    <option value='Superuser'>Superuser</option>  
+                    <option value='Superuser'>Super User</option>
+                    <option value='Staffuser'>Staff User</option>  
                     <option value='User'>User</option>  
                 </select>
             </div> 

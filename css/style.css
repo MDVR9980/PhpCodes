@@ -22,7 +22,6 @@ td {
 }
 
 select {
-    margin-left: 1%;
     margin-bottom: 3.5%;
     width: 80;
     padding: 8px;
@@ -306,7 +305,7 @@ input:hover {
     font-weight: bold;
     color: #3d3e3d;
     text-align: center;
-    margin-left: 138px;
+    margin-left: 140px;
     width: 30%;
     font-family: 'Segoe UI', sans-serif;
 }
