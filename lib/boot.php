@@ -55,10 +55,6 @@ if (isset($_POST['btn-register'])) {
 			exit();
 		}
 	}
-	if (!empty($msg))
-		echo "<div>" . $msg . "</div>";
-
-	if ($result) header("Location:login.php");
 }
 
 
