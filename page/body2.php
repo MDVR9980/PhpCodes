@@ -38,8 +38,8 @@ echo "
                     <svg
                         aria-hidden='true'
                         class='icon-checkbox'
-                        width='28px'
-                        height='28px'
+                        width='20px'
+                        height='20px'
                         viewBox='0 0 28 28'
                         version='1'
                         xmlns='http://www.w3.org/2000/svg' >
@@ -52,9 +52,13 @@ echo "
                 <br/>
                 <div>
                     <input type='submit' class='submit-btn' name='btn-register' value='Save' />
-                    <input type='submit' class='submit-btn' name='btn-to-login' value='Login'/>  
+                    <input type='submit' class='submit-btn' name='btn-to-login' value='Login' onclick='goToLogin()'/>  
                 </div>
             </form>
         </div>	
-    </center>	";
-?>
+    </center>
+    <script>
+    function goToLogin() {  
+        window.location.href = 'login.php'; 
+    } 
+    </script>";

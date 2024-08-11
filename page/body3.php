@@ -49,9 +49,13 @@ echo "
             </div>
             <br/>
             <div>
-                <input type='submit' class='submit-btn' name='btn-reg' value='Register' />
+                <input type='submit' class='submit-btn' name='btn-reg' value='Register' value='Login' onclick='goToLogin()'/>
                 <input type='submit' class='submit-btn' name='btn-login' value='Login' />  
             </div>
         </form>  
-    </div>";
-?>
+    </div>
+    <script>
+    function goToLogin() {  
+        window.location.href = 'userregister.php'; 
+    } 
+    </script>";
