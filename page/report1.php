@@ -40,13 +40,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 					<td><input type='submit' class='submit-btn' name='del-btn' value='Delete' style='font-size: 16px; padding: 8px 18px; width: 100px; height: 50px;'/></td>
 					</div> 
 					<div class='inputGroup'> 
-					<td><input type='submit' class='submit-btn' name='chng-type' value='Inactive / Active User' style='font-size: 16px; padding: 8px 18px; width: 170px; height: 50px;'/></td>
+					<td><input type='submit' class='submit-btn' name='chng-type' value='Inactive / Active User' style='font-size: 16px; padding: 8px 18px; width: 190px; height: 50px;'/></td>
 					</div> 
 					<div class='inputGroup'> 
-					<td><input type='submit' class='submit-btn' name='btn-updateuser' value='Update Information' style='font-size: 16px; padding: 8px 18px; width: 170px; height: 50px;'/></td>
+					<td><input type='submit' class='submit-btn' name='btn-updateuser' value='Update Information' style='font-size: 16px; padding: 8px 18px; width: 180px; height: 50px;'/></td>
 					</div> 
 					<div class='inputGroup'> 
-					<td><input type='submit' class='submit-btn' name='btn-to-chng-pass2' value='Change Password' style='font-size: 16px; padding: 8px 18px; width: 150px; height: 50px;'/></td>
+					<td><input type='submit' class='submit-btn' name='btn-to-chng-pass2' value='Change Password' style='font-size: 16px; padding: 8px 18px; width: 160px; height: 50px;'/></td>
 					</div> 
 				</form>	"
 		. "</tr>";
