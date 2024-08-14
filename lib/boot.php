@@ -94,7 +94,12 @@ if (isset($_POST['btn-login'])) {
 		$result = runquery($conn, $query);
 		$row = mysqli_fetch_assoc($result);
 
-		if ($row) {
+		if($row['type'] != 'true'){
+			$flag = false;
+			$msg .= "User is InActive!";
+		}
+
+		if ($row && $row['type'] == 'true') {
 			if ($row['type-user'] != $typeUser) {
 				$flag = false;
 				$msg .= "Invalid type user!" . "<br />";
@@ -107,7 +112,7 @@ if (isset($_POST['btn-login'])) {
 				}
 				exit();
 			}
-		} else {
+		} else if($flag){
 			$msg .= "Invalid username or password" . "<br />";
 		}
 	}

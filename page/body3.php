@@ -50,13 +50,13 @@ echo "
             </div>
             <br/>
             <div>
-                <input type='submit' class='submit-btn' name='btn-reg' value='Register' value='Login' onclick='goToLogin()'/>
+                <input type='submit' class='submit-btn' name='btn-reg' value='Register' onclick='goToRegister()'/>
                 <input type='submit' class='submit-btn' name='btn-login' value='Login' />  
             </div>
         </form>  
     </div>
     <script>
-    function goToLogin() {  
+    function goToRegister() {  
         window.location.href = 'userregister.php'; 
     } 
     </script>";
