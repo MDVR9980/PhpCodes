@@ -9,8 +9,8 @@ else
 	$userName = $_GET["Susername"];
 
 $query = "SELECT * FROM `student` WHERE `username` = '" . $userName . "'";
-if (findquery($conn, $query) == false) {
-	$result = runquery($conn, $query);
+if ($sql->findquery($query) == false) {
+	$result = $sql->runquery($query);
 	$row = mysqli_fetch_assoc($result);
 	include('body6.php');
 }

@@ -40,14 +40,14 @@ if (isset($_POST['btn-register'])) {
 	} else {
 		$query = "SELECT * FROM `student` WHERE `username` = '" . $userName . "'";
 
-		if (findquery($conn, $query) == false) {
+		if ($sql->findquery($query) == false) {
 			$flag = false;
 			$msg .= "Information current user already inserted!" . "<br />";
 		}
 		if ($flag) {
 			$query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES
 			('" . $name . "', '" . $family . "', 'User', '" . $userName . "', '" . $pass . "', 'true')";
-			$result = runquery($conn, $query);
+			$result = $sql->runquery($query);
 			if (!empty($msg))
 				echo "<div>" . $msg . "</div>";
 
@@ -91,7 +91,7 @@ if (isset($_POST['btn-login'])) {
 
 	if ($flag) {
 		$query = "SELECT * FROM `student` WHERE `username` = '" . $userName . "' and `password` = '" . $pass . "'";
-		$result = runquery($conn, $query);
+		$result = $sql->runquery($query);
 		$row = mysqli_fetch_assoc($result);
 
 		if($row['type'] != 'true'){
@@ -138,10 +138,6 @@ if (isset($_POST['btn-to-update'])) {
 	header("Location:../page/update1.php");
 }
 
-if (isset($_POST['btn-updateuser'])) {
-	header("Location:dashboard.php");
-}
-
 if (isset($_POST['btn-to-report'])) {
 	header("Location:../report/reportstudent.php");
 }
@@ -166,14 +162,24 @@ if (isset($_POST['chng-type'])) {
 	} else {
 		$query = "UPDATE `student` SET `type` = 'true' WHERE `username` = '" . $userName . "'";
 	}
-	runquery($conn, $query);
+	$sql->runquery($query);
 }
 
-if (isset($_POST['del-btn'])) {
-	$userName = trim($_POST['username']);
-	$query = "DELETE FROM `student` WHERE `username` = '" . $userName . "'";
-	runquery($conn, $query);
-}
+if (isset($_POST['del-btn'])) {  
+	$userName = trim($_POST['username']);  
+
+    $query = "DELETE FROM `student` WHERE `username` = '".  $userName ."'";  
+   	$result = $sql->runquery($query);
+	
+	// $delBtn = isset($_POST['del-btn2']) ? $_POST['del-btn2'] : null; 
+
+	// if($delBtn){
+		
+	// 	echo json_encode(['status' => 'success', 'message' => 'User deleted successfully', 'username' => $username]); 
+	// }
+	
+    
+}  
 
 if (isset($_POST['btn-update'])) {
 
@@ -195,7 +201,7 @@ if (isset($_POST['btn-update'])) {
 	} else {
 		$query = "SELECT * FROM `student` WHERE `username` = '" . $userName . "'";
 
-		if (findquery($conn, $query) == false) {
+		if ($sql->findquery($query) == false) {
 			session_start();
 			$_SESSION['username'] = $userName;
 			header("Location:studentupdate.php");
@@ -228,7 +234,7 @@ if (isset($_POST['btn-change-pass-user'])) {
 	}
 	if ($newPass == $newPass2) {
 		$query = "UPDATE `student` SET `password` = '" . $pass . "' WHERE `username` = '" . $userName . "'";
-		runquery($conn, $query);
+		$sql->runquery($query);
 		if ($flagUser == "1")
 			header("Location:../report/reportstudent.php");
 		else
@@ -257,6 +263,6 @@ if (isset($_POST['btn-Update-user'])) {
 		$msg .= "Family User Invalid" . "<br />";
 	}
 	$query = "UPDATE `student` SET `name-user`='" . $name . "',`family-user`='" . $family . "' WHERE `username` = '" . $userName . "'";
-	runquery($conn, $query);
+	$sql->runquery($query);
 	header("Location:../report/reportstudent.php");
 }
