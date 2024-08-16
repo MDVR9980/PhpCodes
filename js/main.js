@@ -58,5 +58,55 @@ $(document).ready(function() {
                 });  
             }  
         });  
-    }); 
+    });
+    
+    $('input[name="btn-register"]').on('click', function(e) {   
+        e.preventDefault();  
+    
+        const formData = {  
+            nameuser: $("input[name='nameuser']").val(),  
+            familyuser: $("input[name='familyuser']").val(),  
+            username: $("input[name='username']").val(),  
+            userpass: $("input[name='userpass']").val(),  
+            captcha: $("input[name='captcha']").val(),  
+            'captcha-rand': $("input[name='captcha-rand']").val(),  
+            subscribe: $("input[name='subscribe']").is(':checked'),  
+            'btn-register': true  
+        };  
+    
+        $.ajax({  
+            url: '../lib/boot.php',  
+            type: 'POST',  
+            data: formData,  
+            success: function(response) {  
+                const res = JSON.parse(response);  
+                if (res.success) {  
+                    Swal.fire({  
+                        position: "top-end",  
+                        icon: "success",  
+                        title: res.message,  
+                        showConfirmButton: false,  
+                        timer: 1500  
+                    }).then(() => {  
+                        window.location.href = "./login.php";  // Redirect to login page  
+                    });  
+                } else {  
+                    if (res.errors) {  
+                        Swal.fire({  
+                            icon: "error",  
+                            title: "Error",  
+                            html: res.errors.join("<br/>")  
+                        });  
+                    } else {  
+                        Swal.fire({  
+                            icon: "error",  
+                            title: "Error",  
+                            text: res.message  
+                        });  
+                    }  
+                }  
+            }  
+        });  
+    });
 });
+

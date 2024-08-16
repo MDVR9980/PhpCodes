@@ -1,8 +1,7 @@
 <?php
 if (isset($_POST['btn-register'])) {  
-    $msg = '';  
     $secret_key = "@@darkday@@";  
-
+    $conn = mysqli_connect("localhost","root","","university");
     $name = trim($_POST['nameuser']);  
     $family = trim($_POST['familyuser']);  
     $userName = trim($_POST['username']);  
@@ -14,37 +13,49 @@ if (isset($_POST['btn-register'])) {
 
     function validateInput($name, $family, $userName, $userPass, $captcha, $captcharandom, $isrebot) {  
         $errors = [];  
-        
+
         if (strlen($name) < 2) $errors[] = "Invalid name!";  
         if (strlen($family) < 3) $errors[] = "Invalid family!";  
         if (strlen($userName) < 8) $errors[] = "Invalid username!";  
         if (strlen($userPass) < 8) $errors[] = "Invalid password!";  
         if ($captcha != $captcharandom) $errors[] = "Invalid captcha value!";  
         if (!$isrebot) $errors[] = "You are a robot!";  
-        
+
         return $errors;  
     }  
 
     $errors = validateInput($name, $family, $userName, $userPass, $captcha, $captcharandom, $isrebot);  
 
     if (empty($errors)) {  
+        // Check if username already exists  
         $query = "SELECT * FROM `student` WHERE `username` = ?";  
-        if (!$mysql->checkExists($query, [$userName])) {  
-            $errors[] = "Current username already exists!";  
-            exit();
-        } 
-        $query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES (?,?,'User',?,?,'true')";
-        $mysql->runQuery($query, [$name, $family, $userName, $pass]);  
-        header("Location:./login.php");   
-    }  
-    else {
-		echo "<div>" . implode("<br />", $errors) . "</div>";
-	}     
-}  
+        $stmt = $conn->prepare($query);  
+        $stmt->bind_param('s', $userName);  
+        $stmt->execute();  
+        $result = $stmt->get_result();  
+
+        if ($result->num_rows > 0) {  
+            echo json_encode(['success' => false, 'message' => 'Current username already exists!']);  
+            exit();  
+        }   
+
+        // Insert the new user  
+        $query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES (?,?,'User',?,'$pass','true')";  
+        $stmt = $conn->prepare($query);  
+        $stmt->bind_param('sss', $name, $family, $userName);  
+        
+        if ($stmt->execute()) {  
+            echo json_encode(['success' => true, 'message' => 'Registration successful!']);  
+        } else {  
+            echo json_encode(['success' => false, 'message' => 'Could not register user.']);  
+        }  
+    } else {  
+        echo json_encode(['success' => false, 'errors' => $errors]);  
+    }     
+}
 
 if (isset($_POST['btn-login'])) {  
-    session_start();  
-    $msg = '';  
+    session_start();   
     $secret_key = "@@darkday@@";  
     
     $typeUser = trim($_POST['tuser']);  
