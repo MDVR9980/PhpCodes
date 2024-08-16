@@ -55,25 +55,31 @@ if (isset($_POST['btn-register'])) {
 }
 
 if (isset($_POST['btn-login'])) {  
-    session_start();   
+    session_start();  
     $secret_key = "@@darkday@@";  
-    
+    $conn = mysqli_connect("localhost", "root", "", "university");  
+
+    if (!$conn) {  
+        die(json_encode(['success' => false, 'errors' => ['Database connection failed!']]));  
+    }  
+
     $typeUser = trim($_POST['tuser']);  
     $_SESSION['Iusername'] = $userName = trim($_POST['Iusername']);  
     $userPass = trim($_POST['userpass']);  
     $captcha = trim($_POST['captcha']);  
     $captcharandom = trim($_POST['captcha-rand']);  
     $isRebot = isset($_POST['subscribe']);  
-    $pass = md5($secret_key.$userPass.$secret_key);  
+
+    $pass = md5($secret_key . $userPass . $secret_key);  
 
     function validateLoginInput($userName, $userPass, $captcha, $captcharandom, $isRebot) {  
         $errors = [];  
-        
-        if (strlen($userName) < 8) $errors[] = "Invalid Username!";  
-        if (strlen($userPass) < 8) $errors[] = "Invalid Password!";  
+
+        if (strlen($userName) < 8) $errors[] = "Invalid Username! Must be at least 8 characters.";  
+        if (strlen($userPass) < 8) $errors[] = "Invalid Password! Must be at least 8 characters.";  
         if ($captcha !== $captcharandom) $errors[] = "Invalid captcha value!";  
         if (!$isRebot) $errors[] = "You are a robot!";  
-        
+
         return $errors;  
     }  
 
@@ -81,28 +87,38 @@ if (isset($_POST['btn-login'])) {
 
     if (empty($errors)) {  
         $query = "SELECT * FROM `student` WHERE `username` = ? AND `password` = ?";  
-        $stmt = $mysql->runQuery($query, [$userName, $pass]);   
-        $row = mysqli_fetch_assoc($stmt);  
-        
-        if ($row) {  
-            if ($row['type'] !== 'true') {  
-                $errors[] = "User is inactive!";  
-            } elseif ($row['type-user'] !== $typeUser) {  
-                $errors[] = "Invalid type user!";  
+        $stmt = mysqli_prepare($conn, $query);  
+
+        if ($stmt) {  
+            mysqli_stmt_bind_param($stmt, 'ss', $userName, $pass);  
+            mysqli_stmt_execute($stmt);  
+            $result = mysqli_stmt_get_result($stmt);  
+            $row = mysqli_fetch_assoc($result);  
+
+            if ($row) {  
+                if ($row['type'] !== 'true') {  
+                    $errors[] = "User is inactive!";  
+                } elseif ($row['type-user'] !== $typeUser) {  
+                    $errors[] = "Invalid type user!";  
+                } else {  
+                    $_SESSION['Iusername'] = $userName;  
+                    echo json_encode(['success' => true, 'message' => 'Login successful!']);  
+                    exit();  
+                }  
             } else {  
-                $_SESSION['Iusername'] = $userName;  
-                header("Location: " . ($typeUser == "Superuser" ? "dashboard2.php" : "dashboard.php?Iusername=" . urlencode($userName)));  
-                exit();  
+                $errors[] = "Invalid username or password";  
             }  
         } else {  
-            $errors[] = "Invalid username or password";  
+            $errors[] = "Query preparation failed! " . mysqli_error($conn);  
         }  
     }  
 
-    else {  
-        echo "<div>" . implode("<br />", $errors) . "</div>";  
-    }  
-}
+    // اگر خطا وجود داشته باشد، آنها را به صورت JSON برگردانید  
+    echo json_encode(['success' => false, 'errors' => $errors]);  
+
+    // در انتها، اتصال به دیتابیس را ببندید  
+    mysqli_close($conn);  
+}  
 
 
 if (isset($_POST['btn-reg'])) {

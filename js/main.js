@@ -108,5 +108,46 @@ $(document).ready(function() {
             }  
         });  
     });
+
+    $('input[name="btn-login"]').on('click', function(e) {  
+        e.preventDefault();  
+    
+        const formData = {  
+            Iusername: $("input[name='Iusername']").val(),  
+            userpass: $("input[name='userpass']").val(),  
+            captcha: $("input[name='captcha']").val(),  
+            'captcha-rand': $("input[name='captcha-rand']").val(),  
+            tuser: $("#user-level").val(),  
+            subscribe: $("input[name='subscribe']").is(':checked'),  
+            'btn-login': true  
+        };  
+        console.log(formData);
+    
+        $.ajax({  
+            url: '../lib/boot.php',  
+            type: 'POST',  
+            data: formData,  
+            success: function(response) {  
+                const res = JSON.parse(response);  
+                if (res.success) {  
+                    Swal.fire({  
+                        position: "top-end",  
+                        icon: "success",  
+                        title: res.message,  
+                        showConfirmButton: false,  
+                        timer: 1500  
+                    }).then(() => {  
+                        window.location.href = res.redirectUrl || "dashboard.php"; // می‌توانید آدرس هدایت را تنظیم کنید  
+                    });  
+                } else {  
+                    Swal.fire({  
+                        icon: "error",  
+                        title: "Error",  
+                        text: res.errors ? res.errors.join(', ') : "An unknown error occurred."  
+                    });  
+                }  
+            }  
+        });  
+    });
 });
 
