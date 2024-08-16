@@ -88,7 +88,7 @@ $(document).ready(function() {
                         showConfirmButton: false,  
                         timer: 1500  
                     }).then(() => {  
-                        window.location.href = "./login.php";  // Redirect to login page  
+                        window.location.href = "./login.php";
                     });  
                 } else {  
                     if (res.errors) {  
@@ -121,7 +121,7 @@ $(document).ready(function() {
             subscribe: $("input[name='subscribe']").is(':checked'),  
             'btn-login': true  
         };  
-        console.log(formData);
+        console.log(formData);  
     
         $.ajax({  
             url: '../lib/boot.php',  
@@ -137,7 +137,14 @@ $(document).ready(function() {
                         showConfirmButton: false,  
                         timer: 1500  
                     }).then(() => {  
-                        window.location.href = res.redirectUrl || "dashboard.php"; // می‌توانید آدرس هدایت را تنظیم کنید  
+                        const userRole = formData.tuser;
+                        if (userRole === 'Superuser') {  
+                            window.location.href = "dashboard2.php";
+                        } else if (userRole === 'User') {  
+                            window.location.href = "dashboard.php";
+                        } else {  
+                            window.location.href = "dashboard.php";
+                        }  
                     });  
                 } else {  
                     Swal.fire({  

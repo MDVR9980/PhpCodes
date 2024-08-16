@@ -27,7 +27,6 @@ if (isset($_POST['btn-register'])) {
     $errors = validateInput($name, $family, $userName, $userPass, $captcha, $captcharandom, $isrebot);  
 
     if (empty($errors)) {  
-        // Check if username already exists  
         $query = "SELECT * FROM `student` WHERE `username` = ?";  
         $stmt = $conn->prepare($query);  
         $stmt->bind_param('s', $userName);  
@@ -39,7 +38,6 @@ if (isset($_POST['btn-register'])) {
             exit();  
         }   
 
-        // Insert the new user  
         $query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES (?,?,'User',?,'$pass','true')";  
         $stmt = $conn->prepare($query);  
         $stmt->bind_param('sss', $name, $family, $userName);  
@@ -112,11 +110,7 @@ if (isset($_POST['btn-login'])) {
             $errors[] = "Query preparation failed! " . mysqli_error($conn);  
         }  
     }  
-
-    // اگر خطا وجود داشته باشد، آنها را به صورت JSON برگردانید  
     echo json_encode(['success' => false, 'errors' => $errors]);  
-
-    // در انتها، اتصال به دیتابیس را ببندید  
     mysqli_close($conn);  
 }  
 
