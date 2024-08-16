@@ -319,3 +319,16 @@ input:hover {
     width: 30%;
     font-family: 'Segoe UI', sans-serif;
 }
+
+
+
+.btn-success {  
+    background-color: #28a745; 
+    border-color: #28a745; 
+}  
+
+.btn-danger {  
+    background-color: #dc3545; 
+    border-color: #dc3545; 
+}
+

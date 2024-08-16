@@ -8,9 +8,9 @@ if (isset($_GET["Iusername"]))
 else
 	$userName = $_GET["Susername"];
 
-$query = "SELECT * FROM `student` WHERE `username` = '" . $userName . "'";
-if ($sql->findquery($query) == false) {
-	$result = $sql->runquery($query);
+$query = "SELECT * FROM `student` WHERE `username` = ?";
+if ($mysql->checkExists($query, [$userName]) == false) {
+	$result = $mysql->runQuery($query, [$userName]);
 	$row = mysqli_fetch_assoc($result);
 	include('body6.php');
 }
