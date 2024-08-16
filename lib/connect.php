@@ -23,17 +23,16 @@ class mySql {
     
             foreach ($params as $param) {  
                 if (is_int($param)) {  
-                    $types .= 'i'; // نوع integer  
+                    $types .= 'i';   
                 } elseif (is_double($param)) {  
-                    $types .= 'd'; // نوع double  
+                    $types .= 'd';   
                 } else {  
-                    $types .= 's'; // نوع string  
+                    $types .= 's';  
                 }  
             }  
     
             $stmt->bind_param($types, ...$params);  
         }  
-    
         $stmt->execute();  
         return $stmt->get_result();  
     }
@@ -46,11 +45,11 @@ class mySql {
     
             foreach ($params as $param) {  
                 if (is_int($param)) {  
-                    $types .= 'i'; // نوع integer  
+                    $types .= 'i';   
                 } elseif (is_double($param)) {  
-                    $types .= 'd'; // نوع double  
+                    $types .= 'd';
                 } else {  
-                    $types .= 's'; // نوع string  
+                    $types .= 's';  
                 }  
             }  
     

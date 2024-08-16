@@ -31,23 +31,16 @@ if (isset($_POST['btn-register'])) {
         $query = "SELECT * FROM `student` WHERE `username` = ?";  
         if (!$mysql->checkExists($query, [$userName])) {  
             $errors[] = "Current username already exists!";  
-        }  
-    }  
-
-    if (empty($errors)) {  
+            exit();
+        } 
         $query = "INSERT INTO `student`(`name-user`, `family-user`, `type-user`, `username`, `password`, `type`) VALUES (?,?,'User',?,?,'true')";
-        $result = $mysql->runQuery($query, [$name, $family, $userName, $pass]);  
-        
-        if ($result) {  
-            header("Location: login.php");  
-            exit();  
-        }  
+        $mysql->runQuery($query, [$name, $family, $userName, $pass]);  
+        header("Location:./login.php");   
     }  
-	else {
+    else {
 		echo "<div>" . implode("<br />", $errors) . "</div>";
-	}
-}
-
+	}     
+}  
 
 if (isset($_POST['btn-login'])) {  
     session_start();  
@@ -102,7 +95,7 @@ if (isset($_POST['btn-login'])) {
 
 
 if (isset($_POST['btn-reg'])) {
-	header("Location:userregister.php");
+	header("Location:./userregister.php");
 }
 
 if (isset($_POST['btn-T-reg'])) {
@@ -114,7 +107,7 @@ if (isset($_POST['btn-T-login'])) {
 }
 
 if (isset($_POST['btn-to-login'])) {
-	header('Location:login.php');
+	header('Location:./login.php');
 }
 
 if (isset($_POST['btn-to-update'])) {
@@ -126,7 +119,7 @@ if (isset($_POST['btn-to-report'])) {
 }
 if (isset($_POST['btn-to-chng-pass'])) {
 	$userName = trim($_POST['username']);
-	header("Location:studentChangepass.php?Iusername=" .  urlencode($userName));
+	header("Location:./studentChangepass.php?Iusername=" .  urlencode($userName));
 }
 if (isset($_POST['btn-to-chng-pass2'])) {
 	$userName = trim($_POST['username']);
@@ -147,18 +140,6 @@ if (isset($_POST['chng-type'])) {
 	}
 	$mysql->runQuery($query, [$userName]);
 }
-
-// if(isset($_POST["USERNAME"])) {  
-//     $username = trim($_POST["USERNAME"]);  
-//     $query = "DELETE FROM student WHERE `username` = ?";  
-//     $result = $mysql->runQuery($query, [$username]); // فرض بر این است که این تابع معتقد به استفاده از prepared statements است.  
-
-//     if ($result) {  
-//         echo json_encode(["success" => true]);  
-//     } else {  
-//         echo json_encode(["success" => false, "message" => "خطا در حذف رکورد"]);   
-//     }  
-// }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_POST['Id'])) {
