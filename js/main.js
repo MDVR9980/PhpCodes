@@ -5,20 +5,16 @@ $(document).ready(function() {
             cancelButton: "btn btn-danger"
         },  
     });  
-
     $('.del-btn').on('click', function(e) {  
         e.preventDefault();  
-        
-        // const userName = $("input[name='username']").val();
         const ID = $(this).data('id');
-        // console.log(id);
         swalWithBootstrapButtons.fire({  
-            title: "آیا مطمئن هستید؟",  
-            text: "این عمل قابل برگشت نخواهد بود!",  
+            title: "Are you sure you want to delete?",  
+            text: "This action cannot be reversed!",  
             icon: "warning",  
             showCancelButton: true,  
-            confirmButtonText: "بله، حذف کن!",  
-            cancelButtonText: "نه، لغو کن!",  
+            confirmButtonText: "Yes, delete it!",  
+            cancelButtonText: "No, cancel it!",  
             reverseButtons: true  
         }).then((result) => {  
             if (result.isConfirmed) {  
@@ -32,15 +28,15 @@ $(document).ready(function() {
                         const res = JSON.parse(response);  
                         if (res.success) {  
                             swalWithBootstrapButtons.fire({  
-                                title: "حذف شد!",  
-                                text: "سابقه شما حذف شد.",  
+                                title: "Deleted",  
+                                text: "The record was deleted.",  
                                 icon: "success"  
                             }).then(() => {  
                                 location.reload();  
                             });  
                         } else {  
                             swalWithBootstrapButtons.fire({  
-                                title: "خطا!",  
+                                title: "Error",  
                                 text: res.message,  
                                 icon: "error"  
                             });  
@@ -48,34 +44,19 @@ $(document).ready(function() {
                     },  
                     error: function() {  
                         swalWithBootstrapButtons.fire({  
-                            title: "خطا!",  
-                            text: "هنگام حذف سابقه خطایی رخ داد.",  
+                            title: "Error!",  
+                            text: "An error occurred while deleting the record.",  
                             icon: "error"  
                         });  
                     }  
                 });  
             } else if (result.dismiss === Swal.DismissReason.cancel) {  
                 swalWithBootstrapButtons.fire({  
-                    title: "لغو شد",  
-                    text: "سابقه شما ایمن است :)",  
+                    title: "Canceled",  
+                    text: "Your record is safe.",  
                     icon: "error"  
                 });  
             }  
         });  
     }); 
-
-    const flashdata = $('.flash-data').data('flashdata');  
-    if (flashdata) {  
-        Swal.fire({  
-            icon: 'success',  
-            title: 'Record deleted',  
-            text: 'The record has been deleted',  
-            confirmButtonText: 'OK', // اضافه کردن متن "OK"  
-            customClass: {  
-                confirmButton: "btn btn-success" // دکمه OK سبز  
-            }  
-        });  
-    }   
 });
-
-

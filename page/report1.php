@@ -54,11 +54,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 		. "</tr>";
 }
 echo "</table>";
-      
-	if(isset($_GET['m'])) {
-		?>
-		<div class="flash-data" data-flashdata="<?php echo $_GET['m']; ?>"></div>	
-		<?php
-	}
-
+    
 ?>
