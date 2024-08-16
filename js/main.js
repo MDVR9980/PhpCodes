@@ -9,8 +9,9 @@ $(document).ready(function() {
     $('.del-btn').on('click', function(e) {  
         e.preventDefault();  
         
-        const userName = $(this).closest('form').find('input[name="username"]').val(); 
-
+        // const userName = $("input[name='username']").val();
+        const ID = $(this).data('id');
+        // console.log(id);
         swalWithBootstrapButtons.fire({  
             title: "آیا مطمئن هستید؟",  
             text: "این عمل قابل برگشت نخواهد بود!",  
@@ -25,7 +26,7 @@ $(document).ready(function() {
                     url: '../lib/boot.php', 
                     type: 'POST',  
                     data: {   
-                        USERNAME: userName 
+                        Id: ID 
                     },  
                     success: function(response) {  
                         const res = JSON.parse(response);  
@@ -61,7 +62,20 @@ $(document).ready(function() {
                 });  
             }  
         });  
-    });  
+    }); 
+
+    const flashdata = $('.flash-data').data('flashdata');  
+    if (flashdata) {  
+        Swal.fire({  
+            icon: 'success',  
+            title: 'Record deleted',  
+            text: 'The record has been deleted',  
+            confirmButtonText: 'OK', // اضافه کردن متن "OK"  
+            customClass: {  
+                confirmButton: "btn btn-success" // دکمه OK سبز  
+            }  
+        });  
+    }   
 });
 
 

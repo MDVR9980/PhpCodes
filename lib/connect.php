@@ -19,22 +19,44 @@ class mySql {
         $stmt = $this->conn->prepare($query);  
         
         if ($params) {  
-            $types = str_repeat('s', count($params)); // Assuming all params are strings  
+            $types = '';  
+    
+            foreach ($params as $param) {  
+                if (is_int($param)) {  
+                    $types .= 'i'; // نوع integer  
+                } elseif (is_double($param)) {  
+                    $types .= 'd'; // نوع double  
+                } else {  
+                    $types .= 's'; // نوع string  
+                }  
+            }  
+    
             $stmt->bind_param($types, ...$params);  
         }  
-
+    
         $stmt->execute();  
         return $stmt->get_result();  
-    }  
+    }
 
     public function checkExists($query, $params = []) {  
         $stmt = $this->conn->prepare($query);  
         
         if ($params) {  
-            $types = str_repeat('s', count($params));  
+            $types = '';  
+    
+            foreach ($params as $param) {  
+                if (is_int($param)) {  
+                    $types .= 'i'; // نوع integer  
+                } elseif (is_double($param)) {  
+                    $types .= 'd'; // نوع double  
+                } else {  
+                    $types .= 's'; // نوع string  
+                }  
+            }  
+    
             $stmt->bind_param($types, ...$params);  
         }  
-
+    
         $stmt->execute();  
         $result = $stmt->get_result();  
         return $result->num_rows === 0;  

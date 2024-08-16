@@ -32,12 +32,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 				} else {
 					echo "Inactive";
 				}
-	echo "</td>" .
-		"<form method='post'>
-					<input type='hidden' name='username' value='" . $row['username'] . "'>  
-					<input type='hidden' name='typeU' value='" . $row['type'] . "'>
+	echo "</td>";
+
+	
+		echo "<form method='post'>
+					<input type='hidden' name='username' value='". $row['username'] ."''>  
+					<input type='hidden' name='typeU' value='". $row['type'] ."''>
 					<div class='inputGroup' > 
-    				<td><button class='submit-btn del-btn' style='font-size: 16px; padding: 8px 18px; width: 100px; height: 50px;'>Delete</button></td>
+    				<td><button type='submit' class='submit-btn del-btn' data-id='". $row['id'] ."' style='font-size: 16px; padding: 8px 18px; width: 100px; height: 50px;'>Delete</button></td>
 					</div> 
 					<div class='inputGroup'> 
 					<td><input type='submit' class='submit-btn' name='chng-type' value='Inactive / Active User' style='font-size: 16px; padding: 8px 18px; width: 190px; height: 50px;'/></td>
@@ -52,4 +54,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 		. "</tr>";
 }
 echo "</table>";
+      
+	if(isset($_GET['m'])) {
+		?>
+		<div class="flash-data" data-flashdata="<?php echo $_GET['m']; ?>"></div>	
+		<?php
+	}
+
 ?>

@@ -29,7 +29,7 @@ if (isset($_POST['btn-register'])) {
 
     if (empty($errors)) {  
         $query = "SELECT * FROM `student` WHERE `username` = ?";  
-        if ($mysql->runQuery($query, [$userName])->num_rows > 0) {  
+        if (!$mysql->checkExists($query, [$userName])) {  
             $errors[] = "Current username already exists!";  
         }  
     }  
@@ -148,18 +148,34 @@ if (isset($_POST['chng-type'])) {
 	$mysql->runQuery($query, [$userName]);
 }
 
+// if(isset($_POST["USERNAME"])) {  
+//     $username = trim($_POST["USERNAME"]);  
+//     $query = "DELETE FROM student WHERE `username` = ?";  
+//     $result = $mysql->runQuery($query, [$username]); // فرض بر این است که این تابع معتقد به استفاده از prepared statements است.  
 
-if(isset($_POST["USERNAME"])) {
-    $username = trim($_POST["USERNAME"]);
-    $query = "DELETE FROM student WHERE `username` = ?"; 
-    $result = $mysql->runQuery($query, [$username]);
-    if($result){
-        echo json_encode(["success" => true]);
-    }
-    else {
-        echo json_encode(["success" => false, "message" => "خطا در حذف رکورد"]);
-    }
+//     if ($result) {  
+//         echo json_encode(["success" => true]);  
+//     } else {  
+//         echo json_encode(["success" => false, "message" => "خطا در حذف رکورد"]);   
+//     }  
+// }
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_POST['Id'])) {
+        $id = intval($_POST['Id']);
+        $conn = mysqli_connect("localhost","root","","university");
+        $query = "DELETE FROM `student` WHERE `id` = ?";  
+        $stmt = $conn->prepare($query);  
+        $stmt->bind_param('i', $id);
+
+        if ($stmt->execute()) {  
+                echo json_encode(['success' => true]);  
+            } else {  
+                echo json_encode(['success' => false, 'message' => 'Could not delete record.']);  
+            }
+        }
 }
+
 
 if (isset($_POST['btn-update'])) {  
 
@@ -262,6 +278,3 @@ if (isset($_POST['btn-Update-user'])) {
 	$mysql->runQuery($query, [$name, $family, $userName]);
 	header("Location:../report/reportstudent.php");
 }
-
-
-
