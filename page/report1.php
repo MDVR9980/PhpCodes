@@ -55,4 +55,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 echo "</table>";
     
+if (isset($_GET['success'])) { 
+	?> 
+    <script>  
+        Swal.fire({  
+            position: "top-end",  
+            icon: "success",  
+            title: "Your work has been saved",  
+            showConfirmButton: false,  
+            timer: 1500  
+        });  
+	</script>
+		<?php
+}
 ?>

@@ -259,24 +259,29 @@ if (isset($_POST['btn-updateuser'])) {
 	header("Location:../page/studentupdate.php");
 }
 
-if (isset($_POST['btn-Update-user'])) {
-
-	$name = trim($_POST['nameuser']);
-	$family = trim($_POST['familyuser']);
-	$userName = trim($_SESSION['username']);
+if (isset($_POST['btn-Update-user'])) {  
+    $name = trim($_POST['nameuser']);  
+    $family = trim($_POST['familyuser']);  
+    $userName = trim($_SESSION['username']);  
 
     function validatePasswordChange($name, $family) {  
         $errors = [];  
 
-		if (strlen($name) < 2) $errors[] = "Name User Invalid" . "<br />";
-		if (strlen($family) < 3) $errors[] = "Family User Invalid" . "<br />";
+        if (strlen($name) < 2) $errors[] = "Name User Invalid" . "<br />";  
+        if (strlen($family) < 3) $errors[] = "Family User Invalid" . "<br />";  
 
         return $errors;  
-    } 
+    }   
 
     $errors = validatePasswordChange($name, $family);  
 
-	$query = "UPDATE `student` SET `name-user`= ?,`family-user`= ? WHERE `username` = ?";
-	$mysql->runQuery($query, [$name, $family, $userName]);
-	header("Location:../report/reportstudent.php");
-}
+    if (empty($errors)) {  
+        $query = "UPDATE `student` SET `name-user`= ?,`family-user`= ? WHERE `username` = ?";  
+        $mysql->runQuery($query, [$name, $family, $userName]);  
+        
+        // Redirect with success message  
+        header("Location: ../report/reportstudent.php?success=1");  
+        exit;  
+    }  
+}  
+?>
