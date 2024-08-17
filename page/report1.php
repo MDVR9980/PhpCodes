@@ -55,16 +55,34 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 echo "</table>";
     
-if (isset($_GET['success'])) { 
+if (isset($_GET['updateSuccess'])) { 
 	?> 
     <script>  
         Swal.fire({  
             position: "top-end",  
             icon: "success",  
-            title: "Your work has been saved",  
+            title: "Update successfully!",  
             showConfirmButton: false,  
             timer: 1500  
-        });  
+        }).then(() => {
+			window.location.href = "../report/reportstudent.php";
+		});
+	</script>
+		<?php
+}
+
+if (isset($_GET['passSuccess'])) { 
+	?> 
+    <script>  
+        Swal.fire({  
+            position: "top-end",  
+            icon: "success",  
+            title: "Change password successfully!",  
+            showConfirmButton: false,  
+            timer: 1500  
+        }).then(() => {
+			window.location.href = "../report/reportstudent.php";
+		});
 	</script>
 		<?php
 }

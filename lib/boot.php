@@ -221,7 +221,6 @@ if (isset($_POST['btn-change-pass-user'])) {
     $newPass = trim($_POST['newPass']);  
     $newPass2 = trim($_POST['newPass2']);  
     $userName = trim($_POST['username']);  
-    $flagUser = trim($_POST['flag-user']);  
     $pass = md5($secret_key.$newPass.$secret_key);  
 
     function validatePasswordChange($newPass, $newPass2) {  
@@ -239,12 +238,7 @@ if (isset($_POST['btn-change-pass-user'])) {
     if(empty($errors)) {  
         $query = "UPDATE `student` SET `password` = ? WHERE `username` = ?";  
         $mysql->runQuery($query, [$pass, $userName]); 
-        
-        if ($flagUser == "1") {  
-            header("Location: ../report/reportstudent.php");  
-        } else {  
-            header("Location: dashboard.php");  
-        }  
+        header("Location: ../report/reportstudent.php?passSuccess=1"); 
         exit();
     }  
 
@@ -258,6 +252,7 @@ if (isset($_POST['btn-updateuser'])) {
 	$_SESSION['username'] = $_POST['username'];
 	header("Location:../page/studentupdate.php");
 }
+
 
 if (isset($_POST['btn-Update-user'])) {  
     $name = trim($_POST['nameuser']);  
@@ -280,7 +275,7 @@ if (isset($_POST['btn-Update-user'])) {
         $mysql->runQuery($query, [$name, $family, $userName]);  
         
         // Redirect with success message  
-        header("Location: ../report/reportstudent.php?success=1");  
+        header("Location: ../report/reportstudent.php?updateSuccess=1");  
         exit;  
     }  
 }  
