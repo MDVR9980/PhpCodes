@@ -15,3 +15,20 @@ echo "
             </div>   
         </form>
     <div>";
+
+if (isset($_GET['passSuccess'])) { 
+    ?> 
+    <script>  
+        Swal.fire({  
+            position: "top-end",  
+            icon: "success",  
+            title: "Change password successfully!",  
+            showConfirmButton: false,  
+            timer: 1500  
+        }).then(() => {
+            
+            window.location.href = "../page/dashboard.php";
+        });
+    </script>
+        <?php
+}

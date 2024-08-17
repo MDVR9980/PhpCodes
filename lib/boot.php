@@ -221,6 +221,7 @@ if (isset($_POST['btn-change-pass-user'])) {
     $newPass = trim($_POST['newPass']);  
     $newPass2 = trim($_POST['newPass2']);  
     $userName = trim($_POST['username']);  
+    $flagUser = trim($_POST['flag-user']);
     $pass = md5($secret_key.$newPass.$secret_key);  
 
     function validatePasswordChange($newPass, $newPass2) {  
@@ -238,7 +239,13 @@ if (isset($_POST['btn-change-pass-user'])) {
     if(empty($errors)) {  
         $query = "UPDATE `student` SET `password` = ? WHERE `username` = ?";  
         $mysql->runQuery($query, [$pass, $userName]); 
-        header("Location: ../report/reportstudent.php?passSuccess=1"); 
+        if($flagUser == "1"){
+            header("Location: ../report/reportstudent.php?passSuccess=1"); 
+        }
+        else {
+            header("Location: ../page/dashboard.php?passSuccess=1"); 
+        }
+        
         exit();
     }  
 

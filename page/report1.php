@@ -81,6 +81,7 @@ if (isset($_GET['passSuccess'])) {
             showConfirmButton: false,  
             timer: 1500  
         }).then(() => {
+			
 			window.location.href = "../report/reportstudent.php";
 		});
 	</script>
