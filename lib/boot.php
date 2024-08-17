@@ -156,10 +156,13 @@ if (isset($_POST['chng-type'])) {
 
 	if ($typeUser == "true") {
 		$query = "UPDATE `student` SET `type` = 'false' WHERE `username` = ?";
+        $mysql->runQuery($query, [$userName]);
+        header("Location: reportstudent.php?chngF=1");
 	} else {
 		$query = "UPDATE `student` SET `type` = 'true' WHERE `username` = ?";
+        $mysql->runQuery($query, [$userName]);
+        header("Location: reportstudent.php?chngT=1");
 	}
-	$mysql->runQuery($query, [$userName]);
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){

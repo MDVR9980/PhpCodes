@@ -81,8 +81,39 @@ if (isset($_GET['passSuccess'])) {
             showConfirmButton: false,  
             timer: 1500  
         }).then(() => {
-			
 			window.location.href = "../report/reportstudent.php";
+		});
+	</script>
+		<?php
+}
+
+if (isset($_GET['chngT'])) { 
+	?> 
+    <script>  
+        Swal.fire({  
+            position: "top-end",  
+            icon: "success",  
+            title: "User successfully activated!",  
+            showConfirmButton: false,  
+            timer: 1500  
+        }).then(() => {
+			window.location.href = "./reportstudent.php";
+		});
+	</script>
+		<?php
+}
+
+if (isset($_GET['chngF'])) { 
+	?> 
+    <script>  
+        Swal.fire({  
+            position: "top-end",  
+            icon: "success",  
+            title: "User successfully deactivated!",  
+            showConfirmButton: false,  
+            timer: 1500  
+        }).then(() => {
+			window.location.href = "./reportstudent.php";
 		});
 	</script>
 		<?php
