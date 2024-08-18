@@ -1,7 +1,6 @@
 <?php
 include('../lib/boot.php');
 
-// تعریف شیء دیتابیس اگر از قبل تعریف نشده باشد
 if (!isset($mysql)) {
     $mysql = new Database("localhost", "root", "", "university");
 }

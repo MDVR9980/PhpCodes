@@ -50,10 +50,6 @@ class User {
                 return ['success' => false, 'message' => 'User is inactive!'];
             }
 
-            // if ($row['type-user'] !== 'User') {
-            //     return ['success' => false, 'message' => 'Invalid user type!'];
-            // }
-
             return ['success' => true, 'message' => 'Login successful!'];
         }
 

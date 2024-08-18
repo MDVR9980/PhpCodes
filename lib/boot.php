@@ -7,11 +7,9 @@ if (!isset($db)) {
     $db = new Database("localhost", "root", "", "university");
 }
 
-// ایجاد شیء User
 $user = new User($db);
 
 
-// Function to handle registration
 function handleRegistration(User $user) {
     $name = trim($_POST['nameuser']);
     $family = trim($_POST['familyuser']);
@@ -25,7 +23,6 @@ function handleRegistration(User $user) {
     echo json_encode($response);
 }
 
-// Function to handle login
 function handleLogin(User $user) {
     $userName = trim($_POST['Iusername']);
     $userPass = trim($_POST['userpass']);
@@ -40,7 +37,6 @@ function handleLogin(User $user) {
     echo json_encode($response);
 }
 
-// Handle form submission based on the button clicked
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['btn-register'])) {
         handleRegistration($user);
@@ -90,7 +86,6 @@ if (isset($_POST['btn-to-dashboard'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {  
-    // تغییر نوع کاربر  
     if (isset($_POST['chng-type'])) {  
         $userName = trim($_POST['username']);  
         $typeUser = trim($_POST['typeU']);  
@@ -103,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();  
     }  
 
-    // حذف کاربر  
     if (isset($_POST['Id'])) {  
         $id = intval($_POST['Id']);  
         $query = "DELETE FROM `student` WHERE `id` = ?";  
@@ -117,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();  
     }  
 
-    // بروزرسانی اطلاعات کاربر  
     if (isset($_POST['btn-update'])) {  
         $userName = trim($_POST['username']);  
         $captcha = trim($_POST['captcha']);  
@@ -169,7 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location:../page/studentupdate.php");
     }
 
-    // بروزرسانی نام و نام خانوادگی کاربر  
     if (isset($_POST['btn-Update-user'])) {  
         $name = trim($_POST['nameuser']);  
         $family = trim($_POST['familyuser']);  

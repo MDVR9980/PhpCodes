@@ -41,19 +41,19 @@ class Database {
             throw new Exception('Query execution failed: ' . $stmt->error);
         }
 
-        $result = $stmt->get_result(); // گرفتن نتیجه
+        $result = $stmt->get_result();
         if ($result === false) {
-            return $stmt; // اگر نتیجه‌ای وجود نداشت، همان stmt برگردانده می‌شود
+            return $stmt; 
         }
 
-        return $result; // برگرداندن نتیجه
+        return $result; 
     }
 
 
     public function checkExists($sql, $params = []) {
         $stmt = $this->runQuery($sql, $params);
         $stmt->store_result();
-        return $stmt->num_rows == 0; // تغییر این خط برای بررسی صحیح وجود داده
+        return $stmt->num_rows == 0;
     }
 
     public function __destruct() {
