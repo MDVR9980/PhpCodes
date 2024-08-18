@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($mysql)) {
+    $mysql = new Database("localhost", "root", "", "university");
+}
+
 echo "
 	<div style='width: 13%;'>
 		<form method='post''>
@@ -17,7 +22,7 @@ echo "<table>
 				<td colspan=4>Operation</td>
 			</tr>";
 $query = "SELECT * FROM `student`";
-$result = $mysql->runQuery($query);
+$result = $mysql->runQuery2($query);
 while ($row = mysqli_fetch_assoc($result)) {
 	echo "
             <tr>

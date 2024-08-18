@@ -1,5 +1,4 @@
 <?php
-	include('../lib/connect.php');
 	include('../lib/boot.php');
 	include('../page/header.php');
 		
