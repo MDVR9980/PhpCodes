@@ -4,7 +4,7 @@ $captcha = changeCaptcha();
 echo "		
     <center>
         <div class='c'>
-            <form method='post'>
+            <form method='post' action='../lib/boot.php'>
                 <div class='inputGroup'>  
                     <input id='nameuser' name='nameuser' type='text' required/>  
                     <label for='nameuser'>Name</label>  
